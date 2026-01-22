@@ -45,13 +45,13 @@ header>.container>nav>.gnb>li:hover>a,header>.container>nav>.gnb>li>a:focus,head
 #aboutme>.content1-right>.profile>.prev:hover,#aboutme>.content1-right>.profile>.prev.on{background-position:0 -42px;}
 #aboutme>.content1-right>.profile>.next:hover,#aboutme>.content1-right>.profile>.next.on{background-position:-31px -42px;}
 
-#aboutme>.content1-right>.tag{position:absolute; bottom:0px; left:0; width:650px; height:100px;} 
-#aboutme>.content1-right>.tag>ul>li{float:left; height:40px; line-height:26px; margin-left:15px; margin-bottom:10px;}
-#aboutme>.content1-right>.tag>ul>li:first-child,#aboutme>.content1-right>.tag>ul>li:nth-child(6){margin-left:0;}
-#aboutme>.content1-right>.tag>ul>li>a{display:block; padding:7px; font-size:23px; font-weight:700; letter-spacing:1px; transition:all 0.4s;}
-#aboutme>.content1-right>.tag>ul>li:hover>a,#aboutme>.content1-right>.tag>ul>li>a:focus,#aboutme>.content1-right>.tag>ul>li.on>a
+.tag{position:absolute; bottom:0px; left:0; width:650px; height:100px;} 
+.tag>ul>li{float:left; height:40px; line-height:26px; margin-left:15px; margin-bottom:10px;}
+.tag>ul>li:first-child,#aboutme>.content1-right>.tag>ul>li:nth-child(6){margin-left:0;}
+.tag>ul>li>a{display:block; padding:7px; font-size:23px; font-weight:700; letter-spacing:1px; transition:all 0.4s;}
+.tag>ul>li:hover>a,#aboutme>.content1-right>.tag>ul>li>a:focus,#aboutme>.content1-right>.tag>ul>li.on>a
 {background-color:#f49389; font-size:22px; color:#fff; border-radius:18px;}
-#aboutme>.content1-right>.tag>ul>li:hover>a:active{background-color:#bbdcfb;}
+.tag>ul>li:hover>a:active{background-color:#bbdcfb;}
 
 /* section - skills */
 #skills{width:1200px; height:960px; margin:0 auto;}
