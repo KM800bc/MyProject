@@ -56,8 +56,10 @@ body {
 /* 슬라이더 */
 .slider-wrapper {
   position: relative;
-  width: 1320px; /* 6개 표시 */
+  width: 100%-25%; /* 6개 표시 */
   margin: auto;
+padding:20px 25%px;
+overflow:hidden;
 }
 
 .slider {
