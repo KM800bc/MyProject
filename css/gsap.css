@@ -59,7 +59,6 @@ body {
   width: calc(100% - 300px); /* 6개 표시 */
   margin: auto;
 padding:20px 300px;
-overflow:hidden;
 }
 
 .slider {
