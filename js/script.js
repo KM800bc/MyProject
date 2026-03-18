@@ -1,5 +1,3 @@
-gsap.registerPlugin(Draggable);
-
 const track = document.querySelector(".track");
 const cards = document.querySelectorAll(".card");
 
@@ -10,45 +8,28 @@ const popup = document.getElementById("popup");
 const contents = document.querySelectorAll(".popup-content");
 const closeBtn = document.getElementById("close");
 
-const cardWidth = 240;
-const maxX = -(cardWidth * (cards.length - 3));
+let current = 0;
 
-let currentX = 0;
+const cardWidth = 220;
+const visible = 6;
+const max = cards.length - visible;
 
-/* 🔥 GSAP 드래그 */
-Draggable.create(track, {
-  type: "x",
-  inertia: true,
-  bounds: { minX: maxX, maxX: 0 },
-  snap: {
-    x: (value) => Math.round(value / cardWidth) * cardWidth
+/* 슬라이드 */
+next.addEventListener("click", () => {
+  if (current < max) {
+    current++;
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
   }
 });
 
-/* 👉 버튼 이동 */
-next.addEventListener("click", () => {
-  currentX -= cardWidth * 2;
-  if (currentX < maxX) currentX = maxX;
-
-  gsap.to(track, {
-    x: currentX,
-    duration: 0.6,
-    ease: "power3.out"
-  });
-});
-
 prev.addEventListener("click", () => {
-  currentX += cardWidth * 2;
-  if (currentX > 0) currentX = 0;
-
-  gsap.to(track, {
-    x: currentX,
-    duration: 0.6,
-    ease: "power3.out"
-  });
+  if (current > 0) {
+    current--;
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
+  }
 });
 
-/* 🔥 카드 클릭 → 팝업 */
+/* 팝업 */
 cards.forEach(card => {
   card.addEventListener("click", () => {
     const index = card.dataset.index;
