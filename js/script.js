@@ -10,32 +10,47 @@ document.addEventListener("DOMContentLoaded", function(){
   const contents = document.querySelectorAll(".popup-content");
   const closeBtn = document.getElementById("close");
 
-  // 👉 요소 없으면 실행 중단 (에러 방지)
-  if (!track || !cards.length || !prev || !next) {
-    console.error("요소 선택 실패");
-    return;
-  }
-
   let current = 0;
   const cardWidth = 220;
   const visible = 6;
   const max = cards.length - visible;
 
-  /* 슬라이드 */
-  next.addEventListener("click", () => {
-    if (current < max) {
+  // GSAP 초기 위치
+  gsap.set(track, { x: 0 });
+
+  /* 슬라이드 - GSAP 애니메이션 */
+  next.addEventListener("click", function(){
+    if(current < max){
       current++;
-      track.style.transform = `translateX(-${current * cardWidth}px)`;
+      gsap.to(track, {duration:0.5, x: -current * cardWidth, ease:"power2.out"});
     }
   });
 
-  prev.addEventListener("click", () => {
-    if (current > 0) {
+  prev.addEventListener("click", function(){
+    if(current > 0){
       current--;
-      track.style.transform = `translateX(-${current * cardWidth}px)`;
+      gsap.to(track, {duration:0.5, x: -current * cardWidth, ease:"power2.out"});
     }
   });
 
-  /* 팝업 */
-  cards.forEach(card => {
-    card.addEvent
+  /* 카드 클릭 → 팝업 */
+  cards.forEach(function(card){
+    card.addEventListener("click", function(){
+      const index = this.getAttribute("data-index");
+
+      contents.forEach(function(c){
+        c.classList.remove("active");
+      });
+
+      document.querySelector('.popup-content[data-index="'+index+'"]')
+        .classList.add("active");
+
+      popup.style.display = "flex";
+    });
+  });
+
+  /* 팝업 닫기 */
+  closeBtn.addEventListener("click", function(){
+    popup.style.display = "none";
+  });
+});
