@@ -35,7 +35,7 @@ body {
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
-  background-collor:#ffffff;
+  background-color:#fff;
 }
 
 .card img {
