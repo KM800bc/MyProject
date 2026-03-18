@@ -96,16 +96,13 @@ body {
 
 /* 화살표 */
 .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+
   width: 45px;
   height: 45px;
   border-radius: 50%;
   border: none;
   background: #fff;
   cursor: pointer;
-  z-index: 10;
 }
 .left { left: -60px; }
 .right { right: -60px; }
