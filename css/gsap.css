@@ -27,22 +27,25 @@ body {
 
 /* 카드 */
 .card {
+  position: relative;
   width: 200px;
   height: 120px;
+  border-radius: 20px;
+  overflow: hidden;
   flex-shrink: 0;
-  background: #fff;
-  border-radius: 20px; /* 모든 방향 동일 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card:hover {
-  transform: scale(1.05);
-  border-radius: 20px; /* hover 시 라운드 유지 */
-  box-shadow: none; /* 그림자 제거 */
+  transform: scale(1.05); /* 가로세로 비율 동일 확대 */
+  border-radius: 20px;
 }
 
 /* 화살표 */
@@ -78,7 +81,7 @@ body {
   background: #fff;
   padding: 30px;
   border-radius: 20px;
-  width: var(--modal-box-width, 90%); /* 애플과 동일 구조 */
+  width: var(--modal-box-width, 90%);
   max-width: 600px;
   position: relative;
 }
@@ -91,7 +94,7 @@ body {
   display: block;
 }
 
-/* 검은색 원형 닫기 버튼 */
+/* 원형 닫기 버튼 */
 #close {
   position: absolute;
   top: 10px;
@@ -103,8 +106,6 @@ body {
   background: #000;
   color: #fff;
   font-size: 18px;
-  line-height: 35px;
-  text-align: center;
   cursor: pointer;
   display: flex;
   align-items: center;
