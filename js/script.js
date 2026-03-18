@@ -1,3 +1,44 @@
+gsap.registerPlugin(ScrollTrigger);
+
+const navToggle = document.querySelector(".nav-toggle");
+const navList = document.querySelector(".nav-list");
+
+// 메뉴 열기 애니메이션
+navToggle.addEventListener("click", () => {
+  // 상태 토글
+  navList.classList.toggle("active");
+
+  if (navList.classList.contains("active")) {
+    gsap.fromTo(
+      navList,
+      { autoAlpha: 0, y: -20 },
+      { duration: 0.5, autoAlpha: 1, y: 0, ease: "power2.out" }
+    );
+
+    gsap.fromTo(
+      ".nav-list li",
+      { x: -20, autoAlpha: 0 },
+      {
+        x: 0,
+        autoAlpha: 1,
+        duration: 0.4,
+        stagger: 0.1,
+      }
+    );
+
+  } else {
+    gsap.to(navList, { duration: 0.3, autoAlpha: 0, y: -10 });
+  }
+});
+
+
+
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function(){
 
   const track = document.querySelector(".track");
