@@ -1,48 +1,41 @@
-const track = document.querySelector(".track");
-const cards = document.querySelectorAll(".card");
+document.addEventListener("DOMContentLoaded", function(){
 
-const prev = document.querySelector(".left");
-const next = document.querySelector(".right");
+  const track = document.querySelector(".track");
+  const cards = document.querySelectorAll(".card");
 
-const popup = document.getElementById("popup");
-const contents = document.querySelectorAll(".popup-content");
-const closeBtn = document.getElementById("close");
+  const prev = document.querySelector(".left");
+  const next = document.querySelector(".right");
 
-let current = 0;
+  const popup = document.getElementById("popup");
+  const contents = document.querySelectorAll(".popup-content");
+  const closeBtn = document.getElementById("close");
 
-const cardWidth = 220;
-const visible = 6;
-const max = cards.length - visible;
-
-/* 슬라이드 */
-next.addEventListener("click", () => {
-  if (current < max) {
-    current++;
-    track.style.transform = `translateX(-${current * cardWidth}px)`;
+  // 👉 요소 없으면 실행 중단 (에러 방지)
+  if (!track || !cards.length || !prev || !next) {
+    console.error("요소 선택 실패");
+    return;
   }
-});
 
-prev.addEventListener("click", () => {
-  if (current > 0) {
-    current--;
-    track.style.transform = `translateX(-${current * cardWidth}px)`;
-  }
-});
+  let current = 0;
+  const cardWidth = 220;
+  const visible = 6;
+  const max = cards.length - visible;
 
-/* 팝업 */
-cards.forEach(card => {
-  card.addEventListener("click", () => {
-    const index = card.dataset.index;
-
-    contents.forEach(c => c.classList.remove("active"));
-    document.querySelector(`.popup-content[data-index="${index}"]`)
-      .classList.add("active");
-
-    popup.style.display = "flex";
+  /* 슬라이드 */
+  next.addEventListener("click", () => {
+    if (current < max) {
+      current++;
+      track.style.transform = `translateX(-${current * cardWidth}px)`;
+    }
   });
-});
 
-/* 닫기 */
-closeBtn.addEventListener("click", () => {
-  popup.style.display = "none";
-});
+  prev.addEventListener("click", () => {
+    if (current > 0) {
+      current--;
+      track.style.transform = `translateX(-${current * cardWidth}px)`;
+    }
+  });
+
+  /* 팝업 */
+  cards.forEach(card => {
+    card.addEvent
