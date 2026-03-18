@@ -7,52 +7,55 @@
   
 </head>
 <body>
-   <h1 class="title">Get to know iPhone</h1>
+<h1 class="title">Get to know iPhone</h1>
 
-<div class="cards">
-  <!-- 10개 카드 -->
-  <div class="card" data-index="0"><img src="https://via.placeholder.com/150"><p>Camera</p></div>
-  <div class="card" data-index="1"><img src="https://via.placeholder.com/150"><p>Display</p></div>
-  <div class="card" data-index="2"><img src="https://via.placeholder.com/150"><p>Chip</p></div>
-  <div class="card" data-index="3"><img src="https://via.placeholder.com/150"><p>Battery</p></div>
-  <div class="card" data-index="4"><img src="https://via.placeholder.com/150"><p>iOS</p></div>
-  <div class="card" data-index="5"><img src="https://via.placeholder.com/150"><p>Privacy</p></div>
-  <div class="card" data-index="6"><img src="https://via.placeholder.com/150"><p>Safety</p></div>
-  <div class="card" data-index="7"><img src="https://via.placeholder.com/150"><p>5G</p></div>
-  <div class="card" data-index="8"><img src="https://via.placeholder.com/150"><p>Design</p></div>
-  <div class="card" data-index="9"><img src="https://via.placeholder.com/150"><p>Accessories</p></div>
+<div class="slider-wrapper">
+
+  <button class="arrow left">←</button>
+
+  <div class="slider">
+    <div class="track">
+      <div class="card" data-index="0">Camera</div>
+      <div class="card" data-index="1">Display</div>
+      <div class="card" data-index="2">Chip</div>
+      <div class="card" data-index="3">Battery</div>
+      <div class="card" data-index="4">iOS</div>
+      <div class="card" data-index="5">Privacy</div>
+      <div class="card" data-index="6">Safety</div>
+      <div class="card" data-index="7">5G</div>
+      <div class="card" data-index="8">Design</div>
+      <div class="card" data-index="9">Accessories</div>
+    </div>
+  </div>
+
+  <button class="arrow right">→</button>
+
 </div>
 
-<!-- 팝업 -->
+
+<!-- 🔥 팝업 -->
 <div id="popup">
   <div class="popup-box">
 
-    <div id="slides">
-
-      <!-- 10개 슬라이드 -->
-      <div class="slide active">
-        <h2>Camera</h2>
-        <p>고급 카메라 기능 설명</p>
-      </div>
-
-      <div class="slide"><h2>Display</h2><p>디스플레이 설명</p></div>
-      <div class="slide"><h2>Chip</h2><p>칩 성능 설명</p></div>
-      <div class="slide"><h2>Battery</h2><p>배터리 설명</p></div>
-      <div class="slide"><h2>iOS</h2><p>iOS 설명</p></div>
-      <div class="slide"><h2>Privacy</h2><p>프라이버시 설명</p></div>
-      <div class="slide"><h2>Safety</h2><p>안전 기능</p></div>
-      <div class="slide"><h2>5G</h2><p>5G 설명</p></div>
-      <div class="slide"><h2>Design</h2><p>디자인 설명</p></div>
-      <div class="slide"><h2>Accessories</h2><p>액세서리 설명</p></div>
-
-    </div>
-
-    <button id="prev">←</button>
-    <button id="next">→</button>
     <button id="close">✕</button>
 
-  </div>
-</div>
+    <!-- 팝업 내용들 (HTML에 직접 넣음) -->
+    <div class="popup-content" data-index="0">
+      <h2>Camera</h2>
+      <p>카메라 상세 설명</p>
+    </div>
+
+    <div class="popup-content" data-index="1">
+      <h2>Display</h2>
+      <p>디스플레이 설명</p>
+    </div>
+
+    <div class="popup-content" data-index="2">
+      <h2>Chip</h2>
+      <p>칩 성능 설명</p>
+    </div>
+
+    <!-- 필요하면 10개까지 계속 추가 -->
   
 <!-- GSAP + ScrollTrigger CDN -->
   <script src="js/gsap.min.js"></script>
