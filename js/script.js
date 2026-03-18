@@ -1,44 +1,67 @@
-document.addEventListener("DOMContentLoaded", function(){
+gsap.registerPlugin(Draggable);
 
-  const cards = document.querySelectorAll(".card");
-  const popup = document.getElementById("popup");
-  const slides = document.querySelectorAll(".slide");
+const track = document.querySelector(".track");
+const cards = document.querySelectorAll(".card");
 
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
-  const close = document.getElementById("close");
+const prev = document.querySelector(".left");
+const next = document.querySelector(".right");
 
-  let current = 0;
+const popup = document.getElementById("popup");
+const contents = document.querySelectorAll(".popup-content");
+const closeBtn = document.getElementById("close");
 
-  function showSlide(index){
-    slides.forEach(s => s.classList.remove("active"));
-    slides[index].classList.add("active");
+const cardWidth = 240;
+const maxX = -(cardWidth * (cards.length - 3));
+
+let currentX = 0;
+
+/* 🔥 GSAP 드래그 */
+Draggable.create(track, {
+  type: "x",
+  inertia: true,
+  bounds: { minX: maxX, maxX: 0 },
+  snap: {
+    x: (value) => Math.round(value / cardWidth) * cardWidth
   }
+});
 
-  // 카드 클릭
-  cards.forEach(card => {
-    card.addEventListener("click", function(){
-      current = parseInt(card.dataset.index);
-      popup.style.display = "flex";
-      showSlide(current);
-    });
+/* 👉 버튼 이동 */
+next.addEventListener("click", () => {
+  currentX -= cardWidth * 2;
+  if (currentX < maxX) currentX = maxX;
+
+  gsap.to(track, {
+    x: currentX,
+    duration: 0.6,
+    ease: "power3.out"
   });
+});
 
-  // 닫기
-  close.addEventListener("click", () => {
-    popup.style.display = "none";
+prev.addEventListener("click", () => {
+  currentX += cardWidth * 2;
+  if (currentX > 0) currentX = 0;
+
+  gsap.to(track, {
+    x: currentX,
+    duration: 0.6,
+    ease: "power3.out"
   });
+});
 
-  // 이전
-  prev.addEventListener("click", () => {
-    current = (current - 1 + slides.length) % slides.length;
-    showSlide(current);
+/* 🔥 카드 클릭 → 팝업 */
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    const index = card.dataset.index;
+
+    contents.forEach(c => c.classList.remove("active"));
+    document.querySelector(`.popup-content[data-index="${index}"]`)
+      .classList.add("active");
+
+    popup.style.display = "flex";
   });
+});
 
-  // 다음
-  next.addEventListener("click", () => {
-    current = (current + 1) % slides.length;
-    showSlide(current);
-  });
-
+/* 닫기 */
+closeBtn.addEventListener("click", () => {
+  popup.style.display = "none";
 });
