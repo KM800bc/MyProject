@@ -81,3 +81,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+  if(typeof gsap!=="undefined") gsap.registerPlugin();
+
+  const cards = document.querySelectorAll(".card");
+  const popup = document.getElementById("popup");
+  const closeBtn = document.getElementById("closePopup");
+  const popupSlides = document.querySelectorAll(".popup-slide");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  let currentIndex=0;
+
+  function showSlide(index){
+    popupSlides.forEach(slide=>slide.classList.remove("active"));
+    const slide = popupSlides[index];
+    slide.classList.add("active");
+
+    // feature 순차 애니메이션
+    const features = slide.querySelectorAll(".feature");
+    gsap.fromTo(features, {opacity:0, y:30}, {opacity:1, y:0, duration:0.5, stagger:0.2});
+
+    gsap.from("#popup-inner",{scale:0.5,opacity:0,duration:0.5,ease:"back.out(1.7)"});
+  }
+
+  cards.forEach(card=>card.addEventListener("click",()=>{
+    currentIndex = parseInt(card.dataset.index);
+    popup.style.display="flex";
+    document.body.style.overflow="hidden";
+    showSlide(currentIndex);
+  }));
+
+  closeBtn.addEventListener("click",()=>{popup.style.display="none"; document.body.style.overflow="auto";});
+  popup.addEventListener("click",e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow="auto";}});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"){popup.style.display="none";document.body.style.overflow="auto";}});
+
+  prevBtn.addEventListener("click",()=>{currentIndex=(currentIndex-1+popupSlides.length)%popupSlides.length;showSlide(currentIndex);});
+  nextBtn.addEventListener("click",()=>{currentIndex=(currentIndex+1)%popupSlides.length;showSlide(currentIndex);});
+});
