@@ -7,101 +7,72 @@
   
 </head>
 <body>
- <section class="hero">
-    <h1>iPhone Features</h1>
-    <div class="buttons">
-      <!-- 버튼 10개 생성 -->
-      <button class="openPopupBtn" data-popup="popup1">Feature 1</button>
-      <button class="openPopupBtn" data-popup="popup2">Feature 2</button>
-      <button class="openPopupBtn" data-popup="popup3">Feature 3</button>
-      <button class="openPopupBtn" data-popup="popup4">Feature 4</button>
-      <button class="openPopupBtn" data-popup="popup5">Feature 5</button>
-      <button class="openPopupBtn" data-popup="popup6">Feature 6</button>
-      <button class="openPopupBtn" data-popup="popup7">Feature 7</button>
-      <button class="openPopupBtn" data-popup="popup8">Feature 8</button>
-      <button class="openPopupBtn" data-popup="popup9">Feature 9</button>
-      <button class="openPopupBtn" data-popup="popup10">Feature 10</button>
+  <section class="hero">
+    <h1>Get to know iPhone</h1>
+    <div class="cards">
+      <!-- 카드 10개 -->
+      <div class="card" data-index="0"><img src="iphone1.png" alt="iPhone 1"><h3>iPhone 1</h3></div>
+      <div class="card" data-index="1"><img src="iphone2.png" alt="iPhone 2"><h3>iPhone 2</h3></div>
+      <div class="card" data-index="2"><img src="iphone3.png" alt="iPhone 3"><h3>iPhone 3</h3></div>
+      <div class="card" data-index="3"><img src="iphone4.png" alt="iPhone 4"><h3>iPhone 4</h3></div>
+      <div class="card" data-index="4"><img src="iphone5.png" alt="iPhone 5"><h3>iPhone 5</h3></div>
+      <div class="card" data-index="5"><img src="iphone6.png" alt="iPhone 6"><h3>iPhone 6</h3></div>
+      <div class="card" data-index="6"><img src="iphone7.png" alt="iPhone 7"><h3>iPhone 7</h3></div>
+      <div class="card" data-index="7"><img src="iphone8.png" alt="iPhone 8"><h3>iPhone 8</h3></div>
+      <div class="card" data-index="8"><img src="iphone9.png" alt="iPhone 9"><h3>iPhone 9</h3></div>
+      <div class="card" data-index="9"><img src="iphone10.png" alt="iPhone 10"><h3>iPhone 10</h3></div>
     </div>
   </section>
 
-  <!-- 팝업 10개 생성 -->
-  <div id="popup1" class="popup">
+  <!-- 팝업: HTML에 모든 내용 미리 넣음 -->
+  <div id="popup" class="popup">
     <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 1 Details</h2>
-      <p>Feature 1에 대한 설명입니다.</p>
-    </div>
-  </div>
+      <span id="closePopup" class="close">&times;</span>
 
-  <div id="popup2" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 2 Details</h2>
-      <p>Feature 2에 대한 설명입니다.</p>
-    </div>
-  </div>
+      <div class="popup-inner">
+        <!-- 카드 0 -->
+        <div class="popup-slide" data-index="0">
+          <img src="iphone1.png" alt="iPhone 1">
+          <h2>iPhone 1</h2>
+          <p>iPhone 1 상세 설명 텍스트</p>
+          <div class="features">
+            <div class="feature">Feature A</div>
+            <div class="feature">Feature B</div>
+            <div class="feature">Feature C</div>
+          </div>
+        </div>
 
-  <div id="popup3" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 3 Details</h2>
-      <p>Feature 3에 대한 설명입니다.</p>
-    </div>
-  </div>
+        <!-- 카드 1 -->
+        <div class="popup-slide" data-index="1">
+          <img src="iphone2.png" alt="iPhone 2">
+          <h2>iPhone 2</h2>
+          <p>iPhone 2 상세 설명 텍스트</p>
+          <div class="features">
+            <div class="feature">Feature D</div>
+            <div class="feature">Feature E</div>
+            <div class="feature">Feature F</div>
+          </div>
+        </div>
 
-  <div id="popup4" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 4 Details</h2>
-      <p>Feature 4에 대한 설명입니다.</p>
-    </div>
-  </div>
+        <!-- 카드 2 -->
+        <div class="popup-slide" data-index="2">
+          <img src="iphone3.png" alt="iPhone 3">
+          <h2>iPhone 3</h2>
+          <p>iPhone 3 상세 설명 텍스트</p>
+          <div class="features">
+            <div class="feature">Feature G</div>
+            <div class="feature">Feature H</div>
+            <div class="feature">Feature I</div>
+          </div>
+        </div>
 
-  <div id="popup5" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 5 Details</h2>
-      <p>Feature 5에 대한 설명입니다.</p>
-    </div>
-  </div>
+        <!-- 카드 3 ~ 9: 동일 구조, 이미지/텍스트/feature 각각 다르게 추가 -->
+        <!-- ... 필요한 만큼 추가 ... -->
+      </div>
 
-  <div id="popup6" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 6 Details</h2>
-      <p>Feature 6에 대한 설명입니다.</p>
-    </div>
-  </div>
-
-  <div id="popup7" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 7 Details</h2>
-      <p>Feature 7에 대한 설명입니다.</p>
-    </div>
-  </div>
-
-  <div id="popup8" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 8 Details</h2>
-      <p>Feature 8에 대한 설명입니다.</p>
-    </div>
-  </div>
-
-  <div id="popup9" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 9 Details</h2>
-      <p>Feature 9에 대한 설명입니다.</p>
-    </div>
-  </div>
-
-  <div id="popup10" class="popup">
-    <div class="popup-content">
-      <span class="close">&times;</span>
-      <h2>Feature 10 Details</h2>
-      <p>Feature 10에 대한 설명입니다.</p>
+      <!-- 좌우 화살표 -->
+      <button id="prevBtn" class="nav-btn">&larr;</button>
+      <button id="nextBtn" class="nav-btn">&rarr;</button>
     </div>
   </div>
   
