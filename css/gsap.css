@@ -31,18 +31,18 @@ body {
   height: 120px;
   flex-shrink: 0;
   background: #fff;
-  border-radius: 20px; /* 라운드 유지 */
+  border-radius: 20px; /* 모든 방향 동일 */
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s;
 }
 
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  border-radius: 20px; /* hover 시에도 그대로 */
+  border-radius: 20px; /* hover 시 라운드 유지 */
+  box-shadow: none; /* 그림자 제거 */
 }
 
 /* 화살표 */
@@ -78,16 +78,15 @@ body {
   background: #fff;
   padding: 30px;
   border-radius: 20px;
-  width: 90%;
+  width: var(--modal-box-width, 90%); /* 애플과 동일 구조 */
   max-width: 600px;
   position: relative;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
 }
 
+/* 팝업 내용 */
 .popup-content {
   display: none;
 }
-
 .popup-content.active {
   display: block;
 }
@@ -112,7 +111,6 @@ body {
   justify-content: center;
   transition: background 0.3s;
 }
-
 #close:hover {
   background: #333;
 }
