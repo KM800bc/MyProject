@@ -94,7 +94,37 @@ footer {
     font-weight: bold;
   }
 
+
+
+
+.lets-work {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .marquee {
+    display: flex;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 96px; /* 글자 크게 */
+  }
+
+  .marquee span {
+    padding-right: 100px; /* 텍스트 사이 간격 */
+  }
+
+  /* 각 줄을 감싸는 wrapper */
+  .marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
 </style>
+ 
 </head>
 <body>
 
@@ -132,12 +162,19 @@ footer {
   <h2>iOS 17 Experience</h2>
   <p>Seamless, intuitive, and secure experience across the ecosystem with iOS 17 and Apple services.</p>
 </section>
-
-
 <section class="lets-work">
   <div class="marquee-wrapper">
-    <div class="marquee">
-      <span>LET’S WORK TOGETHER • LET’S WORK TOGETHER • LET’S WORK TOGETHER</span>
+    <div class="marquee" id="line1">
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+  <div class="marquee-wrapper">
+    <div class="marquee" id="line2">
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
     </div>
   </div>
 </section>
@@ -178,12 +215,21 @@ document.querySelectorAll(".feature").forEach(feature => {
 });
 </script>
 <script>
-gsap.to(".marquee", {
-  x: "-50%",
-  ease: "linear",
-  duration: 12,
-  repeat: -1
-});
+function createMarqueeAnimation(lineId, duration, direction = 1) {
+  const line = document.getElementById(lineId);
+  const lineWidth = line.scrollWidth / 2; // 절반만 이동
+  gsap.to(line, {
+    x: `${-lineWidth * direction}px`,
+    duration: duration,
+    ease: "linear",
+    repeat: -1
+  });
+}
+
+// 위쪽 줄: 오른쪽 → 왼쪽
+createMarqueeAnimation("line1", 12, 1);
+// 아래쪽 줄: 왼쪽 → 오른쪽 (반대)
+createMarqueeAnimation("line2", 12, -1);
 </script>
 
 </body>
