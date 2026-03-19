@@ -127,7 +127,15 @@ footer {
   transition: transform 0.15s ease, background 0.15s ease, border 0.15s ease;
   z-index: 9999;
 }
+ /* 아이콘 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M13 5l7 7-7 7' stroke='white' stroke-width='2' fill='none'/%3E%3C/svg%3E"); /* 또는 png */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
 
+  /* 기본 상태 숨김 */
+  opacity: 0;
+}
 /* hover 시 커서 변경 */
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
@@ -172,7 +180,7 @@ footer {
   <h2>iOS 17 Experience</h2>
   <p>Seamless, intuitive, and secure experience across the ecosystem with iOS 17 and Apple services.</p>
 </section>
-<section class="lets-work">
+<section class="lets-work" data-link="https://example.com">
 <div class="cursor"></div>
   <div class="marquee-wrapper">
     <ul class="marquee a" id="">
@@ -249,6 +257,15 @@ marqueeItems.forEach(item => {
     const url = item.getAttribute("data-link");
     if(url) window.location.href = url; // 클릭 이동
   });
+});
+
+
+//마우스커서
+onst section = document.querySelector(".lets-work");
+
+section.addEventListener("click", () => {
+  const url = section.dataset.link;
+  if(url) window.location.href = url;
 });
 </script>
 
