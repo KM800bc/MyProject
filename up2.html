@@ -118,22 +118,21 @@ footer {
   display:flex;
   white-space:nowrap;
   font-weight:bold;
-  font-size:8vw;
+  font-size:8vw; /* 글자 크기 반응형 */
 }
 
 .marquee span {
   padding-right:5vw;
-  color:#fff;
 }
 
 /* 미디어 쿼리 */
 @media(max-width:768px){
-  .marquee { font-size:12vw; }
-  .marquee span { padding-right:10vw; }
+  .marquee{ font-size:12vw; }
+  .marquee span{ padding-right:10vw; }
 }
 @media(max-width:480px){
-  .marquee { font-size:14vw; }
-  .marquee span { padding-right:15vw; }
+  .marquee{ font-size:14vw; }
+  .marquee span{ padding-right:15vw; }
 }
 </style>
  
@@ -228,38 +227,33 @@ document.querySelectorAll(".feature").forEach(feature => {
 </script>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ModifiersPlugin);
 
-// 각 줄 애니메이션 생성 함수
-function createMarquee(lineId, baseDuration, direction = 1) {
+// 무한 루프 함수
+function createLoop(lineId, direction = 1, duration = 12) {
   const line = document.getElementById(lineId);
-  const lineWidth = line.scrollWidth / 2;
+  const totalWidth = line.scrollWidth / 2;
 
-  const tl = gsap.timeline({repeat:-1});
-  tl.to(line, {
-    x: -lineWidth * direction,
-    duration: baseDuration,
-    ease:"linear"
-  });
-
-  // 스크롤 속도 연동
-  ScrollTrigger.create({
-    trigger: line,
-    start: "top bottom",
-    end: "bottom top",
-    onUpdate: self => {
-      const speedMultiplier = 1 + self.velocity / 500; // 속도 조절
-      tl.timeScale(speedMultiplier);
+  gsap.to(line, {
+    x: -totalWidth * direction,
+    duration: duration,
+    ease: "linear",
+    repeat: -1,
+    modifiers: {
+      x: x => {
+        let val = parseFloat(x);
+        if(direction === 1 && val <= -totalWidth) return 0;
+        if(direction === -1 && val >= 0) return -totalWidth;
+        return val;
+      }
     }
   });
-
-  return tl;
 }
 
-// 위쪽 줄: 왼쪽으로 이동
-createMarquee("line1", 12, 1);
-// 아래쪽 줄: 오른쪽으로 이동
-createMarquee("line2", 12, -1);
+// 위쪽 줄 왼쪽으로 이동
+createLoop("line1", 1, 12);
+// 아래쪽 줄 오른쪽으로 이동
+createLoop("line2", -1, 12);
 </script>
 </body>
 </html>
