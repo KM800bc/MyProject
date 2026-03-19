@@ -3,146 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>iPhone Style Portfolio</title>
+<title>iPhone Style Full Page</title>
 
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
-* {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
-body {background:#fff; color:#111; overflow-x:hidden;}
+  * {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
+  body {background:#fff; color:#111; overflow-x:hidden;}
 
-/* HERO */
-.hero {
-  height:100vh;
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  background:#000;
-  color:#fff;
-}
+  /* 공통 */
+  section {width:100%; padding:100px 10%; display:flex; flex-direction:column; align-items:center; justify-content:center;}
 
-.hero video {
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  object-fit:cover;
-  z-index:-1;
-  opacity:0.5;
-}
+  a {text-decoration:none; color:inherit;}
 
-.hero h1 {font-size:60px; margin-bottom:20px;}
-.hero p {font-size:20px; max-width:600px;}
+  /* Hero */
+  .hero {
+    height:100vh;
+    position:relative;
+    background:#000;
+    color:#fff;
+    text-align:center;
+    justify-content:center;
+    display:flex;
+    flex-direction:column;
+  }
+  .hero h1 {font-size:64px; margin-bottom:20px;}
+  .hero p {font-size:20px; opacity:0.8; max-width:600px;}
 
-/* PRODUCT SECTION */
-section.product {
-  padding:100px 10%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:30px;
-}
+  /* Products */
+  .products {gap: 120px;}
+  .product {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    max-width:700px;
+  }
+  .product img {
+    width:100%;
+    border-radius:24px;
+    box-shadow:0 16px 32px rgba(0,0,0,0.15);
+  }
+  .product h2 {font-size:36px;}
+  .product p {font-size:18px; opacity:0.8; text-align:center;}
 
-.product img {
-  width:80%;
-  max-width:600px;
-  border-radius:20px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.2);
-  cursor:pointer;
-  transition: transform 0.4s ease;
-}
-
-.product img:hover {transform: scale(1.05);}
-
-.product h2 {font-size:40px; margin-bottom:10px;}
-.product p {font-size:18px; text-align:center; max-width:600px;}
-
-/* FOOTER */
-footer {
-  height:200px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#111;
-  color:#fff;
-  font-size:16px;
-}
+  /* Footer */
+  footer {
+    height:160px;
+    background:#111;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+  }
 </style>
 </head>
-
 <body>
 
 <!-- HERO -->
 <section class="hero">
-  <!-- 배경 비디오 느낌 -->
-  <video autoplay muted loop>
-    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-  </video>
-  <h1>iPhone 15</h1>
-  <p>Innovation. At its best.</p>
+  <h1>iPhone 17 Series</h1>
+  <p>Explore the full lineup — from revolutionary performance to all‑day battery life and industry‑leading camera systems.</p>
 </section>
 
-<!-- PRODUCT SECTIONS -->
-<section class="product">
-  <img src="https://picsum.photos/600/400?1" alt="product">
-  <h2>Stunning Display</h2>
-  <p>Experience edge-to-edge Super Retina XDR display with amazing brightness and color accuracy.</p>
+<!-- PRODUCT BLOCKS -->
+<section class="products">
+
+  <div class="product">
+    <img src="https://picsum.photos/800/500?1" alt="iPhone Display">
+    <h2>Immersive Display</h2>
+    <p>Experience edge‑to‑edge display with vibrant colors and true blacks.</p>
+  </div>
+
+  <div class="product">
+    <img src="https://picsum.photos/800/500?2" alt="iPhone Performance">
+    <h2>High Performance</h2>
+    <p>Blazing speed with the latest chip technology and optimized power efficiency.</p>
+  </div>
+
+  <div class="product">
+    <img src="https://picsum.photos/800/500?3" alt="iPhone Camera">
+    <h2>Advanced Camera</h2>
+    <p>Capture extraordinary photos and videos with powerful computational photography.</p>
+  </div>
+
+  <div class="product">
+    <img src="https://picsum.photos/800/500?4" alt="iPhone Features">
+    <h2>iOS Integration</h2>
+    <p>Seamless experience across the ecosystem with exceptional usability.</p>
+  </div>
+
 </section>
 
-<section class="product">
-  <img src="https://picsum.photos/600/400?2" alt="product">
-  <h2>Powerful Performance</h2>
-  <p>Powered by the A16 Bionic chip, enabling lightning-fast performance for gaming and multitasking.</p>
-</section>
-
-<section class="product">
-  <img src="https://picsum.photos/600/400?3" alt="product">
-  <h2>Pro Camera System</h2>
-  <p>Capture stunning photos and videos with the advanced triple-camera system.</p>
-</section>
-
-<section class="product">
-  <img src="https://picsum.photos/600/400?4" alt="product">
-  <h2>iOS Experience</h2>
-  <p>Seamless, intuitive, and secure user experience with iOS 17.</p>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  &copy; 2026 My Portfolio Demo
+  &copy; 2026 iPhone Style Portfolio Demo
 </footer>
 
 <script>
+// GSAP ScrollTrigger init
 gsap.registerPlugin(ScrollTrigger);
 
-// HERO 텍스트 등장
-gsap.from(".hero h1", {y:100, opacity:0, duration:1, ease:"power4.out"});
-gsap.from(".hero p", {y:50, opacity:0, duration:1, delay:0.3, ease:"power4.out"});
+// Hero text animation
+gsap.from(".hero h1", {
+  y: 120, opacity: 0, duration: 1.2, ease: "power4.out"
+});
+gsap.from(".hero p", {
+  y: 80, opacity: 0, duration: 1.2, delay: 0.3, ease: "power4.out"
+});
 
-// PRODUCT 섹션 등장
-document.querySelectorAll(".product").forEach(section => {
-  gsap.from(section.querySelector("img"), {
-    y:50, opacity:0, duration:1, scrollTrigger:{
-      trigger: section,
-      start: "top 80%",
+// ScrollReveal for product blocks
+document.querySelectorAll(".product").forEach((prod) => {
+  gsap.from(prod.querySelector("img"), {
+    y: 60, opacity: 0, duration: 1, scrollTrigger: {
+      trigger: prod,
+      start: "top 85%"
     }
   });
-  gsap.from(section.querySelector("h2"), {
-    y:50, opacity:0, duration:0.8, delay:0.2, scrollTrigger:{
-      trigger: section,
-      start: "top 80%",
+  gsap.from(prod.querySelector("h2"), {
+    y: 40, opacity: 0, duration: 0.8, delay: 0.2, scrollTrigger: {
+      trigger: prod,
+      start: "top 85%"
     }
   });
-  gsap.from(section.querySelector("p"), {
-    y:50, opacity:0, duration:0.8, delay:0.4, scrollTrigger:{
-      trigger: section,
-      start: "top 80%",
+  gsap.from(prod.querySelector("p"), {
+    y: 40, opacity: 0, duration: 0.8, delay: 0.4, scrollTrigger: {
+      trigger: prod,
+      start: "top 85%"
     }
   });
 });
