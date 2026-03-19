@@ -226,34 +226,6 @@ document.querySelectorAll(".feature").forEach(feature => {
 });
 </script>
 
-<script>
-gsap.registerPlugin(ModifiersPlugin);
 
-// 무한 루프 함수
-function createLoop(lineId, direction = 1, duration = 12) {
-  const line = document.getElementById(lineId);
-  const totalWidth = line.scrollWidth / 2;
-
-  gsap.to(line, {
-    x: -totalWidth * direction,
-    duration: duration,
-    ease: "linear",
-    repeat: -1,
-    modifiers: {
-      x: x => {
-        let val = parseFloat(x);
-        if(direction === 1 && val <= -totalWidth) return 0;
-        if(direction === -1 && val >= 0) return -totalWidth;
-        return val;
-      }
-    }
-  });
-}
-
-// 위쪽 줄 왼쪽으로 이동
-createLoop("line1", 1, 12);
-// 아래쪽 줄 오른쪽으로 이동
-createLoop("line2", -1, 12);
-</script>
 </body>
 </html>
