@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>GSAP + Three.js</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+}
+
+canvas {
+  display: block;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+//////////////////////////////////
+// 기본 Three.js 세팅
+//////////////////////////////////
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+
+camera.position.z = 2;
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+//////////////////////////////////
+// 텍스처 (이미지)
+//////////////////////////////////
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load("https://picsum.photos/800/600");
+
+//////////////////////////////////
+// Shader (핵심)
+//////////////////////////////////
+const material = new THREE.ShaderMaterial({
+  uniforms: {
+    uTexture: { value: texture },
+    uMouse: { value: new THREE.Vector2(0.5, 0.5) }
+  },
+
+  vertexShader: `
+    varying vec2 vUv;
+    uniform vec2 uMouse;
+
+    void main() {
+      vUv = uv;
+
+      vec3 pos = position;
+
+      float dist = distance(uv, uMouse);
+      pos.z += sin(dist * 10.0) * 0.1;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+    }
+  `,
+
+  fragmentShader: `
+    uniform sampler2D uTexture;
+    varying vec2 vUv;
+
+    void main() {
+      vec4 color = texture2D(uTexture, vUv);
+      gl_FragColor = color;
+    }
+  `
+});
+
+//////////////////////////////////
+// Plane
+//////////////////////////////////
+const geometry = new THREE.PlaneGeometry(2, 1.5, 32, 32);
+const plane = new THREE.Mesh(geometry, material);
+scene.add(plane);
+
+//////////////////////////////////
+// 마우스 인터랙션 (GSAP 연결)
+//////////////////////////////////
+window.addEventListener("mousemove", (e) => {
+  let x = e.clientX / window.innerWidth;
+  let y = 1.0 - e.clientY / window.innerHeight;
+
+  gsap.to(material.uniforms.uMouse.value, {
+    x: x,
+    y: y,
+    duration: 0.5
+  });
+});
+
+//////////////////////////////////
+// 렌더 루프
+//////////////////////////////////
+function animate() {
+  requestAnimationFrame(animate);
+
+  plane.rotation.y += 0.002;
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+//////////////////////////////////
+// 반응형
+//////////////////////////////////
+window.addEventListener("resize", () => {
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+</script>
+
+</body>
+</html>
+🔥 이 코드에서 중요한 포인트
+✅ 1. Shader
+pos.z += sin(dist * 10.0) * 0.1;
+
+👉 마우스 근처가 울렁거림
+👉 Lusion 느낌 핵심
+
+✅ 2. GSAP 역할
+gsap.to(material.uniforms.uMouse.value, {
+  x: x,
+  y: y,
+  duration: 0.5
+});
+
+👉 Three.js 값도 GSAP으로 부드럽게 제어 가능
+👉 이게 실무에서 많이 쓰는 패턴
+
+✅ 3. 구조 이해
+
+Three.js → 화면 렌더링
+
+Shader → 변형
+
+GSAP → 인터랙션 부드럽게
+
+🚀 다음 단계 (진짜 Lusion 가려면)
+
+여기서 업그레이드하면👇
+
+🔥 필수 추가
+
+hover 시 이미지 바뀌기
+
+multiple planes (프로젝트 리스트)
+
+scroll + WebGL 연결
+
+displacement map
+
+💣 중요한 현실 한마디
+
+👉 지금 이 코드 이해하면
+이미 상위 20% 수준
+
+👉 여기서 shader 조금만 더 하면
+Lusion “느낌”은 충분히 구현 가능
+
+💬 한 줄 정리
+
+👉
+GSAP + Three.js + Shader = Lusion 입문 공식
+
+원하면 다음 단계로
+👉 “이미지 hover 시 왜곡 (진짜 Lusion 핵심)”
+👉 “프로젝트 리스트 WebGL로 만들기”
+
+이거 이어서 만들어줄게 😎
+
+그럼 다시 https://www.apple.com/iphone/   이사이트 처럼 만들고 싶은데... 전체 페이지 레이아웃 코드 짤수있어?
+
+좋아 😎
+Apple iPhone 페이지처럼 만들고 싶다는 말은, 전체 스크롤 기반 섹션 + Hero 영상/이미지 + GSAP/스크롤 애니메이션 느낌을 말하는 거지?
+완전히 똑같은 상업용 디자인은 불가능하지만, 구조 + 인터랙션 + 레이아웃은 충분히 만들어서 포폴용 테스트 가능해.
+
+아래처럼 단일 HTML 파일로 전체 구조 예시를 만들어줄 수 있어.
+
+🚀 Apple 스타일 iPhone 페이지 레이아웃 (포폴용)
+✅ 포함 기능
+
+Hero 섹션 (풀뷰)
+
+Product 섹션 (이미지 + 텍스트)
+
+ScrollTrigger 기반 스크롤 애니메이션
+
+여러 섹션으로 구성 (스크롤에 따라 등장)
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple iPhone Style Demo</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+  * {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
+  body {background:#fff; color:#111; overflow-x:hidden;}
+
+  section {position:relative; width:100%; min-height:100vh; display:flex; align-items:center; justify-content:center; flex-direction:column; padding:0 10%;}
+
+  /* Hero */
+  .hero {background:#000; color:#fff; height:100vh; justify-content:center; text-align:center;}
+  .hero h1 {font-size:60px; margin-bottom:20px;}
+  .hero p {font-size:20px;}
+
+  /* Product Section */
+  .product {display:flex; flex-direction:column; align-items:center; gap:30px; padding:100px 10%;}
+  .product img {width:80%; max-width:600px; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,0.2);}
+  .product h2 {font-size:40px; margin-bottom:10px;}
+  .product p {font-size:18px; text-align:center; max-width:600px;}
+
+  /* Footer */
+  footer {height:200px; display:flex; align-items:center; justify-content:center; background:#111; color:#fff;}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>iPhone 15</h1>
+  <p>Innovation. At its best.</p>
+</section>
+
+<!-- PRODUCT SECTIONS -->
+<section class="product">
+  <img src="https://picsum.photos/600/400?1" alt="product">
+  <h2>Stunning Display</h2>
+  <p>Experience edge-to-edge Super Retina XDR display with amazing brightness and color accuracy.</p>
+</section>
+
+<section class="product">
+  <img src="https://picsum.photos/600/400?2" alt="product">
+  <h2>Powerful Performance</h2>
+  <p>Powered by the A16 Bionic chip, enabling lightning-fast performance for gaming and multitasking.</p>
+</section>
+
+<section class="product">
+  <img src="https://picsum.photos/600/400?3" alt="product">
+  <h2>Pro Camera System</h2>
+  <p>Capture stunning photos and videos with the advanced triple-camera system.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 My Portfolio Demo
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero 텍스트 등장
+gsap.from(".hero h1", {y:100, opacity:0, duration:1, ease:"power4.out"});
+gsap.from(".hero p", {y:50, opacity:0, duration:1, delay:0.3, ease:"power4.out"});
+
+// 각 제품 섹션 스크롤 등장
+document.querySelectorAll(".product").forEach((section, i)=>{
+  gsap.from(section.querySelector("img"), {
+    y:50, opacity:0, duration:1, scrollTrigger:{
+      trigger: section,
+      start: "top 80%",
+    }
+  });
+  gsap.from(section.querySelector("h2"), {
+    y:50, opacity:0, duration:0.8, delay:0.2, scrollTrigger:{
+      trigger: section,
+      start: "top 80%",
+    }
+  });
+  gsap.from(section.querySelector("p"), {
+    y:50, opacity:0, duration:0.8, delay:0.4, scrollTrigger:{
+      trigger: section,
+      start: "top 80%",
+    }
+  });
+});
+</script>
+
+</body>
+</html>
