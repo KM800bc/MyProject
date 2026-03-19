@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apple iPhone Style Layout</title>
+<title>iPhone Style Portfolio</title>
 
+<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -12,22 +13,66 @@
 * {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
 body {background:#fff; color:#111; overflow-x:hidden;}
 
-/* 공통 섹션 */
-section {position:relative; width:100%; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 10%;}
-
 /* HERO */
-.hero {background:#000; color:#fff; height:100vh; justify-content:center; text-align:center;}
+.hero {
+  height:100vh;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  background:#000;
+  color:#fff;
+}
+
+.hero video {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:-1;
+  opacity:0.5;
+}
+
 .hero h1 {font-size:60px; margin-bottom:20px;}
 .hero p {font-size:20px; max-width:600px;}
 
-/* PRODUCT SECTIONS */
-.product {display:flex; flex-direction:column; align-items:center; gap:30px; padding:100px 10%;}
-.product img {width:80%; max-width:600px; border-radius:20px; box-shadow:0 20px 40px rgba(0,0,0,0.2);}
+/* PRODUCT SECTION */
+section.product {
+  padding:100px 10%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+}
+
+.product img {
+  width:80%;
+  max-width:600px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  cursor:pointer;
+  transition: transform 0.4s ease;
+}
+
+.product img:hover {transform: scale(1.05);}
+
 .product h2 {font-size:40px; margin-bottom:10px;}
 .product p {font-size:18px; text-align:center; max-width:600px;}
 
 /* FOOTER */
-footer {height:200px; display:flex; align-items:center; justify-content:center; background:#111; color:#fff; font-size:16px;}
+footer {
+  height:200px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111;
+  color:#fff;
+  font-size:16px;
+}
 </style>
 </head>
 
@@ -35,6 +80,10 @@ footer {height:200px; display:flex; align-items:center; justify-content:center; 
 
 <!-- HERO -->
 <section class="hero">
+  <!-- 배경 비디오 느낌 -->
+  <video autoplay muted loop>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
   <h1>iPhone 15</h1>
   <p>Innovation. At its best.</p>
 </section>
@@ -77,7 +126,7 @@ gsap.from(".hero h1", {y:100, opacity:0, duration:1, ease:"power4.out"});
 gsap.from(".hero p", {y:50, opacity:0, duration:1, delay:0.3, ease:"power4.out"});
 
 // PRODUCT 섹션 등장
-document.querySelectorAll(".product").forEach((section) => {
+document.querySelectorAll(".product").forEach(section => {
   gsap.from(section.querySelector("img"), {
     y:50, opacity:0, duration:1, scrollTrigger:{
       trigger: section,
