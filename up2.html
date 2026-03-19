@@ -78,6 +78,22 @@ footer {
   transition:0.3s;
 }
 .btn:hover {background:#005bb5;}
+
+.lets-work {
+    width: 100%;
+    overflow: hidden;
+    padding: 140px 0;
+  }
+  .marquee-wrapper {
+    width: 200%;
+    white-space: nowrap;
+  }
+  .marquee {
+    display: inline-block;
+    font-size: 64px;
+    font-weight: bold;
+  }
+
 </style>
 </head>
 <body>
@@ -117,6 +133,14 @@ footer {
   <p>Seamless, intuitive, and secure experience across the ecosystem with iOS 17 and Apple services.</p>
 </section>
 
+
+<section class="lets-work">
+  <div class="marquee-wrapper">
+    <div class="marquee">
+      <span>LET’S WORK TOGETHER • LET’S WORK TOGETHER • LET’S WORK TOGETHER</span>
+    </div>
+  </div>
+</section>
 <!-- FOOTER -->
 <footer>
   &copy; 2026 iPhone Style Portfolio Demo
@@ -151,6 +175,14 @@ document.querySelectorAll(".feature").forEach(feature => {
       start:"top 80%"
     }
   });
+});
+</script>
+<script>
+gsap.to(".marquee", {
+  x: "-50%",
+  ease: "linear",
+  duration: 12,
+  repeat: -1
 });
 </script>
 
