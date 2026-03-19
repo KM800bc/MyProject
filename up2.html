@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone Style Portfolio</title>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:sans-serif;}
+body {background:#fff; color:#111; overflow-x:hidden;}
+
+/* 섹션 공통 */
+section {
+  width:100%;
+  padding:120px 10%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+/* HERO */
+.hero {
+  height:100vh;
+  background:#000;
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero h1 {font-size:64px; margin-bottom:20px;}
+.hero p {font-size:22px; max-width:600px; opacity:0.85;}
+
+/* FEATURE 섹션 */
+.feature {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+  max-width:800px;
+}
+.feature img {
+  width:100%;
+  border-radius:24px;
+  box-shadow:0 16px 32px rgba(0,0,0,0.15);
+}
+.feature h2 {font-size:40px;}
+.feature p {font-size:18px; opacity:0.8;}
+
+/* FOOTER */
+footer {
+  height:160px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111;
+  color:#fff;
+  font-size:14px;
+}
+
+/* 버튼 스타일 예시 */
+.btn {
+  padding:12px 36px;
+  margin-top:20px;
+  background:#0071e3;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+.btn:hover {background:#005bb5;}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>iPhone 17 Series</h1>
+  <p>Explore the full lineup — from revolutionary performance to all‑day battery life and industry‑leading camera systems.</p>
+  <button class="btn">Learn More</button>
+</section>
+
+<!-- FEATURE 1 -->
+<section class="feature">
+  <img src="https://picsum.photos/800/500?1" alt="Display Feature">
+  <h2>Immersive Display</h2>
+  <p>Experience edge‑to‑edge Super Retina XDR display with amazing brightness and color accuracy.</p>
+</section>
+
+<!-- FEATURE 2 -->
+<section class="feature">
+  <img src="https://picsum.photos/800/500?2" alt="Performance Feature">
+  <h2>High Performance</h2>
+  <p>Blazing speed with the latest chip technology and optimized power efficiency for all your apps.</p>
+</section>
+
+<!-- FEATURE 3 -->
+<section class="feature">
+  <img src="https://picsum.photos/800/500?3" alt="Camera Feature">
+  <h2>Pro Camera System</h2>
+  <p>Capture stunning photos and videos with the advanced triple-camera system and computational photography.</p>
+</section>
+
+<!-- FEATURE 4 -->
+<section class="feature">
+  <img src="https://picsum.photos/800/500?4" alt="iOS Feature">
+  <h2>iOS 17 Experience</h2>
+  <p>Seamless, intuitive, and secure experience across the ecosystem with iOS 17 and Apple services.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 iPhone Style Portfolio Demo
+</footer>
+
+<script>
+// GSAP ScrollTrigger 초기화
+gsap.registerPlugin(ScrollTrigger);
+
+// HERO 등장 애니메이션
+gsap.from(".hero h1", {y:120, opacity:0, duration:1.2, ease:"power4.out"});
+gsap.from(".hero p", {y:80, opacity:0, duration:1.2, delay:0.3, ease:"power4.out"});
+gsap.from(".hero .btn", {y:60, opacity:0, duration:1, delay:0.5, ease:"power4.out"});
+
+// FEATURE 섹션 스크롤 등장
+document.querySelectorAll(".feature").forEach(feature => {
+  gsap.from(feature.querySelector("img"), {
+    y:60, opacity:0, duration:1, scrollTrigger:{
+      trigger: feature,
+      start:"top 80%"
+    }
+  });
+  gsap.from(feature.querySelector("h2"), {
+    y:40, opacity:0, duration:0.8, delay:0.2, scrollTrigger:{
+      trigger: feature,
+      start:"top 80%"
+    }
+  });
+  gsap.from(feature.querySelector("p"), {
+    y:40, opacity:0, duration:0.8, delay:0.4, scrollTrigger:{
+      trigger: feature,
+      start:"top 80%"
+    }
+  });
+});
+</script>
+
+</body>
+</html>
