@@ -98,44 +98,43 @@ footer {
 
 
 .lets-work {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    padding: 80px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
+  width:100%;
+  height:40vh;
+  min-height:250px;
+  max-height:400px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+  padding:5vh 0;
+}
 
-  .marquee_a {
-    display: flex;
-    white-space: nowrap;
-    font-weight: bold;
-	letter-spacing:-2px;
-    font-size: 96px; /* 글자 크게 */
-  }
-  .marquee {
-    display: flex;
-    white-space: nowrap;
-    font-weight: bold;
-	letter-spacing:-2px;
-    font-size: 96px; /* 글자 크게 */
-  }
-  .marquee_a li {
-	animation: textLoop 6s linear infinite;
-    padding:0 20px; /* 텍스트 사이 간격 */
-  }
-  @keyframes textLoop{
-  0% {transform: translate3d (0,0,0);}
-  100% {transform: translate3d (-100%,0,0);}
-  }
-  
+.marquee-wrapper {
+  width:100%;
+  overflow:hidden;
+}
 
-  /* 각 줄을 감싸는 wrapper */
-  .marquee-wrapper {
-    width: 100%;
-    overflow: hidden;
-  }
+.marquee {
+  display:flex;
+  white-space:nowrap;
+  font-weight:bold;
+  font-size:8vw;
+}
+
+.marquee span {
+  padding-right:5vw;
+  color:#fff;
+}
+
+/* 미디어 쿼리 */
+@media(max-width:768px){
+  .marquee { font-size:12vw; }
+  .marquee span { padding-right:10vw; }
+}
+@media(max-width:480px){
+  .marquee { font-size:14vw; }
+  .marquee span { padding-right:15vw; }
+}
 </style>
  
 </head>
@@ -177,17 +176,17 @@ footer {
 </section>
 <section class="lets-work">
   <div class="marquee-wrapper">
-    <ul class="marquee_a" id="">
-      <li>LET’S WORK TOGETHER </li>
-      <li>LET’S WORK TOGETHER </li>
-      <li>LET’S WORK TOGETHER </li>
+    <div class="marquee" id="line1">
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
     </div>
   </div>
   <div class="marquee-wrapper">
-    <ul class="marquee_b" id="">
-      <li>LET’S WORK TOGETHER </li>
-      <li>LET’S WORK TOGETHER </li>
-      <li>LET’S WORK TOGETHER </li>
+    <div class="marquee" id="line2">
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
+      <span>LET’S WORK TOGETHER &nbsp;&nbsp;&nbsp;</span>
     </div>
   </div>
 </section>
@@ -228,6 +227,39 @@ document.querySelectorAll(".feature").forEach(feature => {
 });
 </script>
 
+<script>
+gsap.registerPlugin(ScrollTrigger);
 
+// 각 줄 애니메이션 생성 함수
+function createMarquee(lineId, baseDuration, direction = 1) {
+  const line = document.getElementById(lineId);
+  const lineWidth = line.scrollWidth / 2;
+
+  const tl = gsap.timeline({repeat:-1});
+  tl.to(line, {
+    x: -lineWidth * direction,
+    duration: baseDuration,
+    ease:"linear"
+  });
+
+  // 스크롤 속도 연동
+  ScrollTrigger.create({
+    trigger: line,
+    start: "top bottom",
+    end: "bottom top",
+    onUpdate: self => {
+      const speedMultiplier = 1 + self.velocity / 500; // 속도 조절
+      tl.timeScale(speedMultiplier);
+    }
+  });
+
+  return tl;
+}
+
+// 위쪽 줄: 왼쪽으로 이동
+createMarquee("line1", 12, 1);
+// 아래쪽 줄: 오른쪽으로 이동
+createMarquee("line2", 12, -1);
+</script>
 </body>
 </html>
