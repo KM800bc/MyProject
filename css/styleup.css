@@ -250,7 +250,7 @@ footer {
   /* 각 줄을 감싸는 wrapper */
   .marquee-wrapper {
     width: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
   }
   .cursor {
   position: fixed;
