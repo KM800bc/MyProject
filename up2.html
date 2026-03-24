@@ -159,13 +159,14 @@ body {
  
 </head>
 <body>
-
-<div class="container">
+<section class="arch-section">
+  <div class="arch-container">
+<div class="arch-bg">
   <div class="spacer"></div>
 
   <div class="arch">
     <div class="arch__left">
-      <div class="arch__info" id="green-arch">
+      <div class="arch__info" id="green">
         <div class="content">
           <h2 class="header">Green Cityscape</h2>
           <p class="desc">Vibrant streets with vertical gardens and solar buildings. This oasis thrives on renewable energy, smart transport, and green spaces for biodiversity.</p>
@@ -233,7 +234,8 @@ body {
   <div class="spacer"></div>
 
 </div>
-
+ </div>
+</section>
 <!-- HERO -->
 <section class="hero">
   <h1>iPhone 17 Series</h1>
@@ -293,7 +295,7 @@ body {
 <script>
 
 
-
+ScrollTrigger.refresh();
 
 
 // Initialize Lenis smooth scroll
@@ -367,7 +369,7 @@ ScrollTrigger.matchMedia({
       scrollTrigger: {
         trigger: ".arch",
         start: "top top",
-        end: "bottom bottom",
+        end: "+=2000",
         pin: ".arch__right",
         scrub: true
       }
@@ -387,7 +389,7 @@ ScrollTrigger.matchMedia({
       if (nextImage) {
         sectionTimeline
           .to(
-            "body",
+            "arch-bg",
             {
               backgroundColor: bgColors[index],
               duration: 1.5,
