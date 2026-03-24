@@ -19,7 +19,7 @@
   background-color: #f9ffe7;
 }
 .arch-section .arch-container {
-  max-width: 1440px;
+  width: 1440px;
   padding: 2rem;
 }
 
@@ -34,6 +34,7 @@
   justify-content: space-between;
   max-width: 1100px;
   margin-inline: auto;
+  min-height: 300vh;
 }
 
 .arch__left {
@@ -162,7 +163,7 @@
 <section class="arch-section">
   <div class="arch-container">
 
-  <div class="spacer"></div>
+  <div class="spacer">다른 내용을 이쪽에 넣어볼까 이건 그냥 공간인거지????</div>
 
   <div class="arch">
     <div class="arch__left">
@@ -231,7 +232,7 @@
     </div>
   </div>
 
-  <div class="spacer"></div>
+  <div class="spacer">다른 내용을 이쪽에 넣어볼까 이건 그냥 공간인거지????   </div>
 
  </div>
 </section>
@@ -370,7 +371,8 @@ ScrollTrigger.matchMedia({
         start: "top top",
         end: "+=2000",
         pin: ".arch__right",
-        scrub: true
+         scrub: true,
+  anticipatePin: 1
       }
     });
 
