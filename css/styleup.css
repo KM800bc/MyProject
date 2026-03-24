@@ -216,7 +216,7 @@ footer {
 
 .lets-work {
     width: 100%;
-    overflow: hidden;
+   /* overflow: hidden; */
     padding:0;
     display: flex;
     flex-direction: column;
