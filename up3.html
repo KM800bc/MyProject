@@ -226,7 +226,26 @@ body {
     </div>
   </div>
 
-  <div class="spacer"></div>
+  <div class="spacer">
+  <section class="lets-work">
+<div class="cursor"></div>
+  <div class="marquee-wrapper">
+    <ul class="marquee a" id="">
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+    </div>
+  </div>
+  <div class="marquee-wrapper">
+    <ul class="marquee b" id="">
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+    </div>
+  </div>
+</section>
+  
+  </div>
 
 </div>
 
@@ -390,6 +409,68 @@ ScrollTrigger.matchMedia({
     });
   }
 });
+
+
+
+
+
+
+// GSAP ScrollTrigger 초기화
+gsap.registerPlugin(ScrollTrigger);
+
+// HERO 등장 애니메이션
+gsap.from(".hero h1", {y:120, opacity:0, duration:1.2, ease:"power4.out"});
+gsap.from(".hero p", {y:80, opacity:0, duration:1.2, delay:0.3, ease:"power4.out"});
+gsap.from(".hero .btn", {y:60, opacity:0, duration:1, delay:0.5, ease:"power4.out"});
+
+// FEATURE 섹션 스크롤 등장
+document.querySelectorAll(".feature").forEach(feature => {
+  gsap.from(feature.querySelector("img"), {
+    y:60, opacity:0, duration:1, scrollTrigger:{
+      trigger: feature,
+      start:"top 80%"
+    }
+  });
+  gsap.from(feature.querySelector("h2"), {
+    y:40, opacity:0, duration:0.8, delay:0.2, scrollTrigger:{
+      trigger: feature,
+      start:"top 80%"
+    }
+  });
+  gsap.from(feature.querySelector("p"), {
+    y:40, opacity:0, duration:0.8, delay:0.4, scrollTrigger:{
+      trigger: feature,
+      start:"top 80%"
+    }
+  });
+});
+
+
+const cursor = document.querySelector(".cursor");
+const marqueeItems = document.querySelectorAll(".marquee li");
+
+// 커서 따라다니기
+window.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+// hover + 클릭
+marqueeItems.forEach(item => {
+  item.addEventListener("mouseenter", () => {
+    cursor.classList.add("hover"); // 커서 모양 변경
+  });
+
+  item.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover");
+  });
+
+  item.addEventListener("click", () => {
+    const url = item.getAttribute("data-link");
+    if(url) window.location.href = url; // 클릭 이동
+  });
+});
+</script>
 </script>
 
 </body>
