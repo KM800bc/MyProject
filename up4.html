@@ -352,13 +352,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  // 🔥 이거 반드시 있어야 함
   const split = new SplitType('.split-text', { types: 'chars' });
 
+  // 텍스트 애니메이션
   gsap.from('.split-text .char', {
-    y: 100,
+    x: -100,
     opacity: 0,
     stagger: 0.05,
-    duration: 1
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top 80%"
+    }
   });
 
 });
