@@ -171,6 +171,7 @@ section {
 }
 .hero h1 {font-size:64px; margin-bottom:20px;}
 .hero p {font-size:22px; max-width:600px; opacity:0.85;}
+.split-text { font-size: 60px;  font-weight: 800;}
 
 /* FEATURE 섹션 */
 .feature {
@@ -267,4 +268,28 @@ footer {
 .cursor.hover {
   transform: translate(-50%, -50%) scale(1.5);
   background: #D0ff71;
+}
+
+
+
+/* 하단 분할텍스트 */
+.Horizontal {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.Horizontal__text {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  gap: 4vw;
+  padding-left: 100vw;
+}
+
+.heading-xl {
+  font-size: clamp(2rem, 10vw, 12rem);
+  font-weight: 600;
+  line-height: 1.1;
 }
