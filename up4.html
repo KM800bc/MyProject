@@ -14,7 +14,7 @@
 
 <body>
 <section class="Horizontal hero">
-<div class="container char split-text">
+<div class="container split-text">
   <h1 class="Horizontal__text heading-xl">
     Creative Developer Portfolio Yoo.KM826
   </h1>
@@ -362,9 +362,9 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-//let wrapper = document.querySelector(".Horizontal");
-//let text = document.querySelector(".Horizontal__text");
-//let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
+let wrapper = document.querySelector(".Horizontal");
+let text = document.querySelector(".Horizontal__text");
+let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
 
 const scrollTween = gsap.to(text, {
   xPercent: -100,
