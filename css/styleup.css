@@ -280,6 +280,7 @@ footer {
   height: 100vh;
   display: flex;
   align-items: center;
+  background-color:#000;
 }
 
 .Horizontal__text {
