@@ -348,12 +348,17 @@ marqueeItems.forEach(item => {
 
 
 
+const split = new SplitType('.split-text', { types: 'chars' });
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
-
-let wrapper = document.querySelector(".Horizontal");
-let text = document.querySelector(".Horizontal__text");
-let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
+gsap.from('.split-text .char', {
+  y: 100,
+  opacity: 0,
+  stagger: 0.05,
+  duration: 1
+});
+//let wrapper = document.querySelector(".Horizontal");
+//let text = document.querySelector(".Horizontal__text");
+//let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
 
 const scrollTween = gsap.to(text, {
   xPercent: -100,
