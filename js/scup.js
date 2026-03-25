@@ -1,11 +1,12 @@
-const split = new SplitType('.split-text', { types: 'chars' });
+window.addEventListener("DOMContentLoaded", () => {
+  const split = new SplitType('.split-text', { types: 'chars' });
 
-gsap.from('.split-text .char', {
-  y: 100,
-  opacity: 0,
-  stagger: 0.05,
-  duration: 1,
-  ease: "power3.out"
+  gsap.from('.split-text .char', {
+    y: 100,
+    opacity: 0,
+    stagger: 0.05,
+    duration: 1
+  });
 });
 
 gsap.registerPlugin(ScrollTrigger);
