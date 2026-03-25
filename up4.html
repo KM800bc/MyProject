@@ -193,7 +193,7 @@ handleMobileLayout();
 const imgs = gsap.utils.toArray(".img-wrapper img");
 const bgColors = ["#EDF9FF", "#FFECF2", "#FFE8DB"];
 
-/* GSAP Animation with Media Query
+// GSAP Animation with Media Query
 ScrollTrigger.matchMedia({
   "(min-width: 769px)": function () {
     const mainTimeline = gsap.timeline({
@@ -205,17 +205,6 @@ ScrollTrigger.matchMedia({
         scrub: true
       }
     });
-*/
-scrollTrigger: {
-  trigger: ".arch",
-  start: "top bottom",   // 🔥 이거 핵심
-  end: "+=" + (imgs.length * window.innerHeight),
-  scrub: true,
-  pin: ".arch__right",
-  anticipatePin: 1
-}
-
-
 
     gsap.set(imgs, {
       clipPath: "inset(0)",
