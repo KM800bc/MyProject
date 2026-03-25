@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="css/styleup.css" />
 
 <body>
-<section class="Horizontal hero">
-<div class="container split-text">
+<section class="Horizontal ">
+<div class="container">
   <h1 class="Horizontal__text heading-xl">
     Creative Developer Portfolio Yoo.KM826
   </h1>
@@ -194,18 +194,29 @@ const imgs = gsap.utils.toArray(".img-wrapper img");
 const bgColors = ["#EDF9FF", "#FFECF2", "#FFE8DB"];
 
 /* GSAP Animation with Media Query*/
-ScrollTrigger.matchMedia({
-  "(min-width: 769px)": function () {
-    const mainTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".arch",
-        start: "top top",
-        end: "bottom bottom",
-        pin: ".arch__right",
-        scrub: true
-      }
-    });
+//ScrollTrigger.matchMedia({
+//  "(min-width: 769px)": function () {
+ //   const mainTimeline = gsap.timeline({
+ //     scrollTrigger: {
+//        trigger: ".arch",
+//        start: "top top",
+ //       end: "bottom bottom",
+//        pin: ".arch__right",
+//        scrub: true
+ //     }
+//    });
 
+
+const mainTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".arch",
+    start: "top bottom",
+    end: "+=" + (imgs.length * window.innerHeight),
+    scrub: true,
+    pin: ".arch__right",
+    anticipatePin: 1
+  }
+});
 
 
 
