@@ -361,56 +361,17 @@ marqueeItems.forEach(item => {
   });
 });
 
+new SplitType('.split-text', { types: 'chars' });
 
-window.addEventListener("DOMContentLoaded", () => {
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  // 🔥 이거 반드시 있어야 함
-  const split = new SplitType('.split-text', { types: 'chars' });
-
-  // 텍스트 애니메이션
-  gsap.from('.split-text .char', {
-    x: -100,
-    opacity: 0,
-    stagger: 0.05,
-    duration: 1,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".hero",
-      start: "top 80%"
-    }
-  });
-
-});
-let wrapper = document.querySelector(".Horizontal");
-let text = document.querySelector(".Horizontal__text");
-//let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
-
-const scrollTween = gsap.to(text, {
-  xPercent: -100,
-  ease: "none",
+gsap.from('.split-text .char', {
+  x: -100,
+  opacity: 0,
+  stagger: 0.05,
+  duration: 1,
   scrollTrigger: {
-    trigger: wrapper,
-    pin: true,
-    end: "+=5000px",
-    scrub: true
+    trigger: ".hero",
+    start: "top 80%"
   }
-});
-
-split.chars.forEach((char) => {
-  gsap.from(char, {
-    yPercent: "random(-200, 200)",
-    rotation: "random(-20, 20)",
-    ease: "back.out(1.2)",
-    scrollTrigger: {
-      trigger: char,
-      containerAnimation: scrollTween,
-      start: "left 100%",
-      end: "left 30%",
-      scrub: 1
-    }
-  });
 });
 
 
