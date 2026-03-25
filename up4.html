@@ -11,12 +11,14 @@
 <script src="https://unpkg.com/split-type"></script>
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/styleup.css" />
-<script src="js/scup.js"></script>
+
 <body>
-<section class="hero">
-  <h1 class="split-text">
+<section class="Horizontal">
+<div class="container">
+  <h1 class="Horizontal__text heading-xl">
     Creative Developer Portfolio Yoo.KM826
   </h1>
+  </div>
 </section>
 <div class="container">
   <div class="spacer">
@@ -343,8 +345,46 @@ marqueeItems.forEach(item => {
     if(url) window.location.href = url; // 클릭 이동
   });
 });
+
+
+
+
+gsap.registerPlugin(SplitText, ScrollTrigger);
+
+let wrapper = document.querySelector(".Horizontal");
+let text = document.querySelector(".Horizontal__text");
+let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
+
+const scrollTween = gsap.to(text, {
+  xPercent: -100,
+  ease: "none",
+  scrollTrigger: {
+    trigger: wrapper,
+    pin: true,
+    end: "+=5000px",
+    scrub: true
+  }
+});
+
+split.chars.forEach((char) => {
+  gsap.from(char, {
+    yPercent: "random(-200, 200)",
+    rotation: "random(-20, 20)",
+    ease: "back.out(1.2)",
+    scrollTrigger: {
+      trigger: char,
+      containerAnimation: scrollTween,
+      start: "left 100%",
+      end: "left 30%",
+      scrub: 1
+    }
+  });
+});
+
+
+
 </script>
-</script>
+
 
 </body>
 </html>
