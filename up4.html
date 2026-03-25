@@ -127,85 +127,31 @@
 
 <script>
 
-// Initialize Lenis smooth scroll
-//const lenis = new Lenis({
-//  duration: 1.2,
-//  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-//  smooth: true,
- // gestureDirection: "vertical",
- // smoothTouch: true,
-//  touchMultiplier: 2
-//});
-
-//function raf(time) {
- // lenis.raf(time);
- // ScrollTrigger.update();
-//  requestAnimationFrame(raf);
-//}
-
-// requestAnimationFrame(raf);
-
 gsap.registerPlugin(ScrollTrigger);
 
-// Set z-index for images
-document.querySelectorAll(".arch__right .img-wrapper").forEach((element) => {
-  const order = element.getAttribute("data-index");
-  if (order !== null) {
-    element.style.zIndex = order;
+// =====================
+// 1. HERO 텍스트 애니메이션
+// =====================
+new SplitType('.split-text', { types: 'chars' });
+
+gsap.from('.split-text .char', {
+  x: -100,
+  opacity: 0,
+  stagger: 0.05,
+  duration: 1,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top 80%"
   }
 });
 
-// Mobile layout handler (only handle order)
-function handleMobileLayout() {
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
-  const leftItems = gsap.utils.toArray(".arch__left .arch__info");
-  const rightItems = gsap.utils.toArray(".arch__right .img-wrapper");
 
-  if (isMobile) {
-    // Interleave items using order
-    leftItems.forEach((item, i) => {
-      item.style.order = i * 2;
-    });
-    rightItems.forEach((item, i) => {
-      item.style.order = i * 2 + 1;
-    });
-  } else {
-    // Clear order for desktop
-    leftItems.forEach((item) => {
-      item.style.order = "";
-    });
-    rightItems.forEach((item) => {
-      item.style.order = "";
-    });
-  }
-}
-
-// Debounce resize for performance
-let resizeTimeout;
-window.addEventListener("resize", () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(handleMobileLayout, 100);
-});
-
-// Run on initial load
-handleMobileLayout();
-
+// =====================
+// 2. ARCH 애니메이션
+// =====================
 const imgs = gsap.utils.toArray(".img-wrapper img");
 const bgColors = ["#EDF9FF", "#FFECF2", "#FFE8DB"];
-
-/* GSAP Animation with Media Query*/
-//ScrollTrigger.matchMedia({
-//  "(min-width: 769px)": function () {
- //   const mainTimeline = gsap.timeline({
- //     scrollTrigger: {
-//        trigger: ".arch",
-//        start: "top top",
- //       end: "bottom bottom",
-//        pin: ".arch__right",
-//        scrub: true
- //     }
-//    });
-
 
 const mainTimeline = gsap.timeline({
   scrollTrigger: {
@@ -213,95 +159,37 @@ const mainTimeline = gsap.timeline({
     start: "top bottom",
     end: "+=" + (imgs.length * window.innerHeight),
     scrub: true,
-    pin: ".arch__right",
-    anticipatePin: 1
+    pin: ".arch__right"
   }
 });
 
-
-
-    gsap.set(imgs, {
-      clipPath: "inset(0)",
-      objectPosition: "0px 0%"
-    });
-
-    imgs.forEach((_, index) => {
-      const currentImage = imgs[index];
-      const nextImage = imgs[index + 1] ? imgs[index + 1] : null;
-
-      const sectionTimeline = gsap.timeline();
-
-      if (nextImage) {
-        sectionTimeline
-          .to(
-            "body",
-            {
-              backgroundColor: bgColors[index],
-              duration: 1.5,
-              ease: "power2.inOut"
-            },
-            0
-          )
-          .to(
-            currentImage,
-            {
-              clipPath: "inset(0px 0px 100%)",
-              objectPosition: "0px 60%",
-              duration: 1.5,
-              ease: "none"
-            },
-            0
-          )
-          .to(
-            nextImage,
-            {
-              objectPosition: "0px 40%",
-              duration: 1.5,
-              ease: "none"
-            },
-            0
-          );
-      }
-
-      mainTimeline.add(sectionTimeline);
-    });
-
-
-
-
-
-
-
-// GSAP ScrollTrigger 초기화
-gsap.registerPlugin(ScrollTrigger);
-
-/* HERO 등장 애니메이션
-gsap.from(".hero h1", {y:120, opacity:0, duration:1.2, ease:"power4.out"});
-gsap.from(".hero p", {y:80, opacity:0, duration:1.2, delay:0.3, ease:"power4.out"});
-gsap.from(".hero .btn", {y:60, opacity:0, duration:1, delay:0.5, ease:"power4.out"});
-
-// FEATURE 섹션 스크롤 등장
-document.querySelectorAll(".feature").forEach(feature => {
-  gsap.from(feature.querySelector("img"), {
-    y:60, opacity:0, duration:1, scrollTrigger:{
-      trigger: feature,
-      start:"top 80%"
-    }
-  });
-  gsap.from(feature.querySelector("h2"), {
-    y:40, opacity:0, duration:0.8, delay:0.2, scrollTrigger:{
-      trigger: feature,
-      start:"top 80%"
-    }
-  });
-  gsap.from(feature.querySelector("p"), {
-    y:40, opacity:0, duration:0.8, delay:0.4, scrollTrigger:{
-      trigger: feature,
-      start:"top 80%"
-    }
-  });
+// 초기 설정
+gsap.set(imgs, {
+  clipPath: "inset(0)",
+  objectPosition: "0px 0%"
 });
-*/
+
+// 애니메이션
+imgs.forEach((_, index) => {
+  const currentImage = imgs[index];
+  const nextImage = imgs[index + 1];
+
+  if (nextImage) {
+    mainTimeline
+      .to("body", {
+        backgroundColor: bgColors[index],
+        duration: 1.5
+      })
+      .to(currentImage, {
+        clipPath: "inset(0px 0px 100%)",
+        duration: 1.5
+      }, "<")
+      .to(nextImage, {
+        objectPosition: "0px 40%",
+        duration: 1.5
+      }, "<");
+  }
+});
 
 
 const cursor = document.querySelector(".cursor");
@@ -328,20 +216,6 @@ marqueeItems.forEach(item => {
     if(url) window.location.href = url; // 클릭 이동
   });
 });
-
-new SplitType('.split-text', { types: 'chars' });
-
-gsap.from('.split-text .char', {
-  x: -100,
-  opacity: 0,
-  stagger: 0.05,
-  duration: 1,
-  scrollTrigger: {
-    trigger: ".Horizontal",
-    start: "top 80%"
-  }
-});
-
 
 
 </script>
