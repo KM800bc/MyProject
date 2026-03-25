@@ -1,5 +1,17 @@
-// Initialize Lenis smooth scroll
-const lenis = new Lenis({
+const split = new SplitType('.split-text', { types: 'chars' });
+
+gsap.from('.split-text .char', {
+  y: 100,
+  opacity: 0,
+  stagger: 0.05,
+  duration: 1,
+  ease: "power3.out"
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Initialize Lenis smooth scroll   
+/*const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   smooth: true,
@@ -15,7 +27,7 @@ function raf(time) {
 }
 
 requestAnimationFrame(raf);
-
+*/
 // Set z-index for images
 document.querySelectorAll(".arch__right .img-wrapper").forEach((element) => {
   const order = element.getAttribute("data-index");
@@ -157,34 +169,4 @@ ScrollTrigger.matchMedia({
 
 
 /*하단 분할텍스트*/
-gsap.registerPlugin(SplitText, ScrollTrigger);
 
-let wrapper = document.querySelector(".Horizontal");
-let text = document.querySelector(".Horizontal__text");
-let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
-
-const scrollTween = gsap.to(text, {
-  xPercent: -100,
-  ease: "none",
-  scrollTrigger: {
-    trigger: wrapper,
-    pin: true,
-    end: "+=5000px",
-    scrub: true
-  }
-});
-
-split.chars.forEach((char) => {
-  gsap.from(char, {
-    yPercent: "random(-200, 200)",
-    rotation: "random(-20, 20)",
-    ease: "back.out(1.2)",
-    scrollTrigger: {
-      trigger: char,
-      containerAnimation: scrollTween,
-      start: "left 100%",
-      end: "left 30%",
-      scrub: 1
-    }
-  });
-});
