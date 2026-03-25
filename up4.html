@@ -265,39 +265,7 @@ const mainTimeline = gsap.timeline({
 
       mainTimeline.add(sectionTimeline);
     });
-  },
-  "(max-width: 768px)": function () {
-    const mbTimeline = gsap.timeline();
-    gsap.set(imgs, {
-      objectPosition: "0px 60%"
-    });
 
-    imgs.forEach((image, index) => {
-      const innerTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: image,
-          start: "top-=70% top+=50%",
-          end: "bottom+=200% bottom",
-          scrub: true
-        }
-      });
-
-      innerTimeline
-        .to(image, {
-          objectPosition: "0px 30%",
-          duration: 5,
-          ease: "none"
-        })
-        .to("body", {
-          backgroundColor: bgColors[index],
-          duration: 1.5,
-          ease: "power2.inOut"
-        });
-
-      mbTimeline.add(innerTimeline);
-    });
-  }
-});
 
 
 
@@ -369,7 +337,7 @@ gsap.from('.split-text .char', {
   stagger: 0.05,
   duration: 1,
   scrollTrigger: {
-    trigger: ".hero",
+    trigger: ".Horizontal",
     start: "top 80%"
   }
 });
