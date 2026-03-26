@@ -334,14 +334,7 @@ gsap.registerPlugin(ScrollTrigger);
 //let text = document.querySelector(".Horizontal__text");
 //let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
 /*대신 다음내용 추가*/
-new SplitType('.Horizontal__text', { types: 'chars' });
 
-gsap.from('.Horizontal__text .char', {
-  x: -100,
-  opacity: 0,
-  stagger: 0.05,
-  duration: 1
-});
 
 //const scrollTween = gsap.to(text, {
 //  xPercent: -100,
@@ -354,10 +347,14 @@ gsap.from('.Horizontal__text .char', {
 //  }
 //});
 
+// SplitType (무료)
+const split = new SplitType('.Horizontal__text', { types: 'chars' });
+
+// 랜덤 애니메이션
 gsap.from(split.chars, {
   yPercent: () => gsap.utils.random(-200, 200),
   xPercent: () => gsap.utils.random(-100, 100),
-  rotation: () => gsap.utils.random(-30, 30),
+  rotation: () => gsap.utils.random(-20, 20),
   opacity: 0,
   ease: "back.out(1.2)",
   stagger: {
@@ -367,7 +364,7 @@ gsap.from(split.chars, {
   scrollTrigger: {
     trigger: ".Horizontal",
     start: "top 80%",
-    end: "top 30%",
+    end: "top 20%",
     scrub: 1
   }
 });
