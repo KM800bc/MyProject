@@ -3,96 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Text Animation Test</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
 <style>
-body { margin:0; }
-
-.arch {
-  display: flex;
-  min-height: 300vh;
-}
-
-.arch__left {
-  width: 50%;
-}
-
-.arch__info {
-  height: 100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.arch__right {
-  width: 50%;
-  height: 100vh;
-  position: relative;
-}
-
-.img-wrapper {
-  position: absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-}
-
-.img-wrapper img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* 스크롤을 위해 충분한 높이 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+  }
+  .Horizontal {
+    margin-top: 150px;
+    font-size: 2rem;
+    text-align: center;
+  }
+  .Horizontal span {
+    display: inline-block;
+  }
 </style>
 </head>
-
 <body>
 
-<div class="arch">
-  <div class="arch__left">
-    <div class="arch__info">텍스트1</div>
-    <div class="arch__info">텍스트2</div>
-    <div class="arch__info">텍스트3</div>
-  </div>
-
-  <div class="arch__right">
-    <div class="img-wrapper" style="z-index:3">
-      <img src="https://picsum.photos/800/600?1">
-    </div>
-    <div class="img-wrapper" style="z-index:2">
-      <img src="https://picsum.photos/800/600?2">
-    </div>
-    <div class="img-wrapper" style="z-index:1">
-      <img src="https://picsum.photos/800/600?3">
-    </div>
-  </div>
-</div>
+<section class="Horizontal">
+  The containerAnimation property allows us to create ScrollTriggered animations!
+</section>
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-const imgs = gsap.utils.toArray(".img-wrapper img");
+  const textEl = document.querySelector('.Horizontal');
+  const text = textEl.innerText;
+  const chars = text.split('');
 
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".arch",
-    start: "top top",
-    end: "+=2000",
-    scrub: true,
-    pin: ".arch__right"
-  }
-});
+  // 텍스트를 span으로 분할
+  textEl.innerHTML = chars.map(char => char === " " ? "&nbsp;" : `<span>${char}</span>`).join('');
+  const spans = textEl.querySelectorAll('span');
 
-imgs.forEach((img, i) => {
-  if (imgs[i+1]) {
-    tl.to(img, {
-      clipPath: "inset(0 0 100% 0)",
-      duration: 1
-    });
-  }
-});
+  // 애니메이션
+  gsap.from(spans, {
+    y: 100,           // 아래서 위로 등장
+    opacity: 0,
+    rotation: () => gsap.utils.random(-15, 15),
+    stagger: 0.05,
+    duration: 0.8,
+    ease: "back.out(1.2)",
+    scrollTrigger: {
+      trigger: ".Horizontal",
+      start: "top 80%", // 화면 아래 80%에 도달하면 시작
+      end: "top 50%",   // 화면 중간까지
+      toggleActions: "play none none none", // 한 번만 재생
+      markers: true      // 위치 확인용
+    }
+  });
 </script>
 
 </body>
