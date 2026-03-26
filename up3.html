@@ -348,27 +348,33 @@ gsap.registerPlugin(ScrollTrigger);
 //});
 
 // SplitType (무료)
-const split = new SplitType('.Horizontal__text', { types: 'chars' });
+window.addEventListener("DOMContentLoaded", () => {
 
-// 랜덤 애니메이션
-gsap.from(split.chars, {
-  yPercent: () => gsap.utils.random(-200, 200),
-  xPercent: () => gsap.utils.random(-100, 100),
-  rotation: () => gsap.utils.random(-20, 20),
-  opacity: 0,
-  ease: "back.out(1.2)",
-  stagger: {
-    each: 0.03,
-    from: "random"
-  },
-  scrollTrigger: {
-    trigger: ".Horizontal",
-    start: "top 80%",
-    end: "top 20%",
-    scrub: 1
-  }
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1. 먼저 텍스트 쪼개고
+  const split = new SplitType('.Horizontal__text', { types: 'chars' });
+
+  // 2. 그 다음 애니메이션 실행
+  gsap.from(split.chars, {
+    yPercent: () => gsap.utils.random(-200, 200),
+    xPercent: () => gsap.utils.random(-100, 100),
+    rotation: () => gsap.utils.random(-20, 20),
+    opacity: 0,
+    ease: "back.out(1.2)",
+    stagger: {
+      each: 0.03,
+      from: "random"
+    },
+    scrollTrigger: {
+      trigger: ".Horizontal",
+      start: "top 80%",
+      end: "top 20%",
+      scrub: 1
+    }
+  });
+
 });
-</script>
 </script>
 
 </body>
