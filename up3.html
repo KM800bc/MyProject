@@ -8,6 +8,7 @@
 <!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/split-type"></script>
 <link rel="stylesheet" href="css/reset.css" />
 <link rel="stylesheet" href="css/styleup.css" />
 <body>
@@ -327,11 +328,20 @@ marqueeItems.forEach(item => {
 
 
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-let wrapper = document.querySelector(".Horizontal");
-let text = document.querySelector(".Horizontal__text");
-let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
+//let wrapper = document.querySelector(".Horizontal");
+//let text = document.querySelector(".Horizontal__text");
+//let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
+/*대신 다음내용 추가*/
+new SplitType('.Horizontal__text', { types: 'chars' });
+
+gsap.from('.Horizontal__text .char', {
+  x: -100,
+  opacity: 0,
+  stagger: 0.05,
+  duration: 1
+});
 
 const scrollTween = gsap.to(text, {
   xPercent: -100,
