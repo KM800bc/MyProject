@@ -294,27 +294,7 @@ gsap.from(".hero h1", {y:120, opacity:0, duration:1.2, ease:"power4.out"});
 gsap.from(".hero p", {y:80, opacity:0, duration:1.2, delay:0.3, ease:"power4.out"});
 gsap.from(".hero .btn", {y:60, opacity:0, duration:1, delay:0.5, ease:"power4.out"});
 
-// FEATURE 섹션 스크롤 등장
-document.querySelectorAll(".feature").forEach(feature => {
-  gsap.from(feature.querySelector("img"), {
-    y:60, opacity:0, duration:1, scrollTrigger:{
-      trigger: feature,
-      start:"top 80%"
-    }
-  });
-  gsap.from(feature.querySelector("h2"), {
-    y:40, opacity:0, duration:0.8, delay:0.2, scrollTrigger:{
-      trigger: feature,
-      start:"top 80%"
-    }
-  });
-  gsap.from(feature.querySelector("p"), {
-    y:40, opacity:0, duration:0.8, delay:0.4, scrollTrigger:{
-      trigger: feature,
-      start:"top 80%"
-    }
-  });
-});
+
 
 
 const cursor = document.querySelector(".cursor");
