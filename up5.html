@@ -7,59 +7,72 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <style>
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 200vh; /* 스크롤을 위해 충분한 높이 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-  }
-  .Horizontal {
-    margin-top: 150px;
-    font-size: 2rem;
-    text-align: center;
-  }
-  .Horizontal span {
-    display: inline-block;
-  }
+.Horizontal {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.Horizontal__text {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  gap: 4vw;
+  padding-left: 100vw;
+}
+
+.heading-xl {
+  font-size: clamp(2rem, 10vw, 12rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
 </style>
 </head>
 <body>
 
 <section class="Horizontal">
-  The containerAnimation property allows us to create ScrollTriggered animations!
+  <div class="container">
+    <h3 class="Horizontal__text heading-xl">
+      The containerAnimation property allows us to create ScrollTriggered animations within a container that's animated horizontally. It's like having nested ScrollTriggers!
+    </h3>
+  </div>
 </section>
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
-  const textEl = document.querySelector('.Horizontal');
-  const text = textEl.innerText;
-  const chars = text.split('');
+let wrapper = document.querySelector(".Horizontal");
+let text = document.querySelector(".Horizontal__text");
+let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
 
-  // 텍스트를 span으로 분할
-  textEl.innerHTML = chars.map(char => char === " " ? "&nbsp;" : `<span>${char}</span>`).join('');
-  const spans = textEl.querySelectorAll('span');
+const scrollTween = gsap.to(text, {
+  xPercent: -100,
+  ease: "none",
+  scrollTrigger: {
+    trigger: wrapper,
+    pin: true,
+    end: "+=5000px",
+    scrub: true
+  }
+});
 
-  // 애니메이션
-  gsap.from(spans, {
-    y: 100,           // 아래서 위로 등장
-    opacity: 0,
-    rotation: () => gsap.utils.random(-15, 15),
-    stagger: 0.05,
-    duration: 0.8,
+split.chars.forEach((char) => {
+  gsap.from(char, {
+    yPercent: "random(-200, 200)",
+    rotation: "random(-20, 20)",
     ease: "back.out(1.2)",
     scrollTrigger: {
-      trigger: ".Horizontal",
-      start: "top 80%", // 화면 아래 80%에 도달하면 시작
-      end: "top 50%",   // 화면 중간까지
-      toggleActions: "play none none none", // 한 번만 재생
-      markers: true      // 위치 확인용
+      trigger: char,
+      containerAnimation: scrollTween,
+      start: "left 100%",
+      end: "left 30%",
+      scrub: 1
     }
   });
+});
+
 </script>
 
 </body>
