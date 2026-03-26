@@ -354,15 +354,24 @@ gsap.registerPlugin(ScrollTrigger);
 //});
 
 // SplitType (무료)
+gsap.registerPlugin(ScrollTrigger);
+
 window.addEventListener("DOMContentLoaded", () => {
 
-  gsap.registerPlugin(ScrollTrigger);
+  const textEl = document.querySelector('.Horizontal__text');
 
-  // 1. 먼저 텍스트 쪼개고
-  const split = new SplitType('.Horizontal__text', { types: 'chars' });
+  // 🔥 글자 쪼개기 (SplitType 대신)
+  const text = textEl.innerText;
+  const chars = text.split('');
 
-  // 2. 그 다음 애니메이션 실행
-  gsap.from(split.chars, {
+  textEl.innerHTML = chars.map(char => {
+    return char === " " ? `<span>&nbsp;</span>` : `<span>${char}</span>`;
+  }).join('');
+
+  const spans = document.querySelectorAll('.Horizontal__text span');
+
+  // 🔥 GSAP 애니메이션 (기존 그대로 느낌 유지)
+  gsap.from(spans, {
     yPercent: () => gsap.utils.random(-200, 200),
     xPercent: () => gsap.utils.random(-100, 100),
     rotation: () => gsap.utils.random(-20, 20),
