@@ -7,87 +7,72 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <style>
-  body { margin:0; font-family: sans-serif; overflow-x: hidden; }
-  .Horizontal { height: 100vh; display:flex; justify-content:center; align-items:center; background:#f0f0f0; }
-  .Horizontal__text { font-size:2rem; text-align:center; }
-  .arch { display:flex; height: 150vh; }
-  .arch__left, .arch__right { flex:1; position:relative; }
-  .arch__info { margin: 50px; }
-  .img-wrapper { position:absolute; top:0; left:0; width:100%; height:100%; }
-  .img-wrapper img { width:100%; height:100%; object-fit:cover; }
-  span { display:inline-block; }
+  .Horizontal {
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.Horizontal__text {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  gap: 4vw;
+  padding-left: 100vw;
+}
+
+.heading-xl {
+  font-size: clamp(2rem, 10vw, 12rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
 </style>
 </head>
 <body>
 
 <section class="Horizontal">
-  <h3 class="Horizontal__text">The containerAnimation property allows us to create ScrollTriggered animations within a container that's animated horizontally. It's like having nested ScrollTriggers!</h3>
+  <div class="container">
+    <h3 class="Horizontal__text heading-xl">
+      The containerAnimation property allows us to create ScrollTriggered animations within a container that's animated horizontally. It's like having nested ScrollTriggers!
+    </h3>
+  </div>
 </section>
 
-<div class="arch">
-  <div class="arch__left">
-    <div class="arch__info" id="green-arch"><h2>Green Cityscape</h2></div>
-    <div class="arch__info" id="blue-arch"><h2>Blue Urban Oasis</h2></div>
-    <div class="arch__info" id="pink-arch"><h2>Fluid Architecture</h2></div>
-    <div class="arch__info" id="orange-arch"><h2>Martian Arches</h2></div>
-  </div>
-  <div class="arch__right">
-    <div class="img-wrapper" data-index="4"><img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/cu8978xjlsjjpjk52ta0.webp"></div>
-    <div class="img-wrapper" data-index="3"><img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/trh7c8ufv1dqfrofdytd.webp"></div>
-    <div class="img-wrapper" data-index="2"><img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/aw6qwur0pggp5r03whjq.webp"></div>
-    <div class="img-wrapper" data-index="1"><img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/sqwn8u84zd1besgl0zpd.webp"></div>
-  </div>
-</div>
-
 <script>
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
-// --- 텍스트 span으로 쪼개기 ---
-const textEl = document.querySelector('.Horizontal__text');
-const text = textEl.innerText;
-const chars = text.split('');
-textEl.innerHTML = chars.map(char => char === " " ? `<span>&nbsp;</span>` : `<span>${char}</span>`).join('');
-const spans = textEl.querySelectorAll('span');
+let wrapper = document.querySelector(".Horizontal");
+let text = document.querySelector(".Horizontal__text");
+let split = SplitText.create(".Horizontal__text", { type: "chars, words" });
 
-// --- 텍스트 애니메이션 ---
-const textTween = gsap.from(spans, {
-  yPercent: () => gsap.utils.random(-200,200),
-  xPercent: () => gsap.utils.random(-100,100),
-  rotation: () => gsap.utils.random(-20,20),
-  opacity: 0,
-  ease:"back.out(1.2)",
-  stagger:{each:0.02, from:"random"}
-});
-
-// --- 이미지 z-index 세팅 ---
-document.querySelectorAll(".arch__right .img-wrapper").forEach(el=>{
-  el.style.zIndex = el.dataset.index;
-});
-
-// --- 이미지 애니메이션 ---
-const imgs = gsap.utils.toArray(".img-wrapper img");
-
-// --- 전체 timeline ---
-const mainTimeline = gsap.timeline({
-  scrollTrigger:{
-    trigger:".arch",
-    start:"top top",
-    end:"bottom bottom",
-    scrub:1,
-    pin:".arch__right"
+const scrollTween = gsap.to(text, {
+  xPercent: -100,
+  ease: "none",
+  scrollTrigger: {
+    trigger: wrapper,
+    pin: true,
+    end: "+=5000px",
+    scrub: true
   }
 });
 
-// 이미지 순서대로 clip/position 애니메이션 추가
-imgs.forEach((img,index)=>{
-  const nextImg = imgs[index+1] || img;
-  mainTimeline.to(img, { clipPath:"inset(0px 0px 100%)", duration:1.5, ease:"none" }, 0)
-              .to(nextImg, { objectPosition:"0px 40%", duration:1.5, ease:"none" }, 0)
-              .to("body", { backgroundColor: ["#EDF9FF","#FFECF2","#FFE8DB","#FFD1B3"][index], duration:1.5, ease:"power2.inOut" }, 0);
+split.chars.forEach((char) => {
+  gsap.from(char, {
+    yPercent: "random(-200, 200)",
+    rotation: "random(-20, 20)",
+    ease: "back.out(1.2)",
+    scrollTrigger: {
+      trigger: char,
+      containerAnimation: scrollTween,
+      start: "left 100%",
+      end: "left 30%",
+      scrub: 1
+    }
+  });
 });
 
-// --- 텍스트 timeline과 합치기 ---
-mainTimeline.add(textTween, 0); // 0으로 시작해서 이미지와 동시에
 </script>
 
 </body>
