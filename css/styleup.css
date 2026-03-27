@@ -145,7 +145,7 @@ body {
 }
 
 
-/* 섹션 공통 */
+/* 섹션 공통 
 section {
   width:100%;
   padding:120px 10%;
@@ -155,7 +155,7 @@ section {
   justify-content:center;
   text-align:center;
 }
-
+*/
 /* HERO */
 .hero {
   height:100vh;
