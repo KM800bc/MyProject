@@ -298,7 +298,7 @@ button {
   padding: var(--section-padding) var(--container-padding);
   justify-content: center;
   align-items: center;
-  min-height: 50svh;
+  min-height: 30svh;
   display: flex;
   position: relative;
 }
