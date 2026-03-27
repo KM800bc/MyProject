@@ -298,7 +298,7 @@ button {
   padding: var(--section-padding) var(--container-padding);
   justify-content: center;
   align-items: center;
-  min-height: 100svh;
+  min-height: 50svh;
   display: flex;
   position: relative;
 }
@@ -313,7 +313,7 @@ button {
 
 .text-draw__p {
   margin-bottom: 0;
-  font-size: 1.5em;
+ /* font-size: 1.5em;*/
   font-weight: 500;
   line-height: 1.1;
 }
