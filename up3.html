@@ -206,7 +206,6 @@ function handleMobileLayout() {
   }
 }
 
-
 // Debounce resize for performance
 let resizeTimeout;
 window.addEventListener("resize", () => {
@@ -226,7 +225,7 @@ ScrollTrigger.matchMedia({
     const mainTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: ".arch",
-        start: "top 80%",
+        start: "top top",
         end: "bottom bottom",
         pin: ".arch__right",
         scrub: true
@@ -424,9 +423,6 @@ function initDrawRandomUnderline() {
 document.addEventListener('DOMContentLoaded', function() {
   initDrawRandomUnderline();
 });
-
-
-
 
 </script>
 </body>
