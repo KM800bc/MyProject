@@ -152,24 +152,7 @@
 </footer>-->
 
 <script>
-new SplitType('.intro__title', { types: 'chars' });
 
-// 등장 애니메이션
-gsap.from('.intro__title .char', {
-  y: 120,
-  opacity: 0,
-  stagger: 0.03,
-  duration: 1,
-  ease: "power3.out"
-});
-
-gsap.from('.intro__desc', {
-  y: 40,
-  opacity: 0,
-  duration: 1,
-  delay: 0.4,
-  ease: "power2.out"
-});
 // Initialize Lenis smooth scroll
 //const lenis = new Lenis({
 //  duration: 1.2,
@@ -440,6 +423,25 @@ function initDrawRandomUnderline() {
 // Initialize Draw Random Underline
 document.addEventListener('DOMContentLoaded', function() {
   initDrawRandomUnderline();
+});
+
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Split 실행
+  const split = new SplitType('.intro__title', { types: 'chars' });
+
+  // 애니메이션
+  gsap.from(split.chars, {
+    y: 120,
+    opacity: 0,
+    stagger: 0.03,
+    duration: 1,
+    ease: "power3.out"
+  });
+
 });
 
 </script>
