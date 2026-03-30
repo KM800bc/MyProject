@@ -14,17 +14,20 @@
 <style>
 .hero-intro {
   height: 100vh;
-  background: #111; /* 원하는 컬러 */
+  background: #111;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.intro-title {
+.hero-inner {
+  text-align: center;
+}
+
+.hero-title {
   color: #fff;
   font-size: 4vw;
-  text-align: center;
   line-height: 1.2;
 }
 </style>
@@ -176,18 +179,33 @@
 </footer>-->
 
 <script>
-gsap.registerPlugin(ScrollTrigger);
+window.addEventListener("DOMContentLoaded", () => {
 
-// 텍스트 쪼개기 (무료)
-const split = new SplitType('.intro-title', { types: 'chars' });
+  gsap.registerPlugin(ScrollTrigger);
 
-// 등장 애니메이션
-gsap.from(split.chars, {
-  y: 100,
-  opacity: 0,
-  stagger: 0.05,
-  duration: 1,
-  ease: "power3.out"
+  // 👉 SplitType 실행
+  const split = new SplitType('.hero-title', { types: 'chars' });
+
+  // 👉 텍스트 등장
+  gsap.from(split.chars, {
+    y: 80,
+    opacity: 0,
+    stagger: 0.04,
+    duration: 1,
+    ease: "power3.out"
+  });
+
+  // 👉 스크롤 시 intro 사라짐 (arch랑 연결)
+  gsap.to('.hero-intro', {
+    opacity: 0,
+    scrollTrigger: {
+      trigger: ".hero-intro",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+
 });
 // Initialize Lenis smooth scroll
 //const lenis = new Lenis({
