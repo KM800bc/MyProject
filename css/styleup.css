@@ -24,7 +24,7 @@ body {
   gap: 60px;
   justify-content: space-between;
   max-width: 1100px;
-  margin-inline: auto;
+  margin: 0 auto;
   min-height: 300vh
 }
 
@@ -223,6 +223,7 @@ footer {
     justify-content: space-around;
 	background-color:#000;
 	color:#fff;
+	padding:25px 0;
   }
   .marquee {
     display: flex;
