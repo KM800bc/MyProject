@@ -176,10 +176,18 @@
 </footer>-->
 
 <script>
-gsap.from(".hero-intro", {
-  backgroundColor: "#000",
-  duration: 1.2,
-  ease: "power2.out"
+gsap.registerPlugin(ScrollTrigger);
+
+// 텍스트 쪼개기 (무료)
+const split = new SplitType('.intro-title', { types: 'chars' });
+
+// 등장 애니메이션
+gsap.from(split.chars, {
+  y: 100,
+  opacity: 0,
+  stagger: 0.05,
+  duration: 1,
+  ease: "power3.out"
 });
 // Initialize Lenis smooth scroll
 //const lenis = new Lenis({
