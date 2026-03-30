@@ -201,11 +201,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const tl = gsap.timeline();
 
   // 3️⃣ 컬러가 위로 올라감
-  tl.to(".hero-overlay", {
-    y: "-60%",
-    duration: 1.2,
-    ease: "power4.inOut"
-  })
+ tl.to(".hero-overlay", {
+  yPercent: -40, // 또는 y: "-40vh"
+  duration: 1.2,
+  ease: "power4.inOut"
+});
 
   // 4️⃣ 텍스트 등장
   .to(".hero-title", {
