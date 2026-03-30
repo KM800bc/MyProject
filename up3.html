@@ -426,23 +426,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-window.addEventListener("DOMContentLoaded", () => {
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Split 실행
-  const split = new SplitType('.intro__title', { types: 'chars' });
-
-  // 애니메이션
-  gsap.from(split.chars, {
-    y: 120,
-    opacity: 0,
-    stagger: 0.03,
-    duration: 1,
-    ease: "power3.out"
-  });
-
-});
 
 </script>
 </body>
