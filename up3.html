@@ -30,7 +30,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: #515151; /* 처음 보이는 색 */
+  background: #181916; /* 처음 보이는 색 */
   z-index: 2;
 }
 </style>
@@ -201,8 +201,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const tl = gsap.timeline();
 
   // 3️⃣ 컬러가 위로 올라감
-  tl.to(".hero-overlay", {
-  y: "-35vh",
+tl.to(".hero-overlay", {
+  yPercent: -35,
   duration: 1.2,
   ease: "power4.inOut"
 });
