@@ -195,7 +195,7 @@ window.addEventListener("DOMContentLoaded", () => {
   gsap.set(".hero-inner", { opacity: 0, y: 40 });
 
   // 2️⃣ 타임라인
-  const tl = gsap.timeline();
+  const tl = gsap.timeline({ delay: 3 });
 
   // 3️⃣ 컬러가 위로 올라감
   tl.to(".hero-overlay", {
