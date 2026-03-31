@@ -35,21 +35,14 @@
 
 </head>
 <body>
-<section class="hero-intro">
-  
+<section class="hero-intro"> 
   <!-- 🔥 위에 덮는 컬러 -->
   <div class="hero-overlay">
   <div class="hero-inner">
-	<h1 class="hero-title">Yoo.KM826</h1>
+	<div class="hero-title">Yoo.KM826</div>
      <p>Creative Developer Portfolio</p>
   </div>
-  
-  
   </div>
-
-  <!-- 실제 콘텐츠 -->
-  
-
 </section>
 <section class="intro">
   <div class="container intro__inner">
@@ -195,7 +188,7 @@ window.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   // 1️⃣ 텍스트 미리 숨김
-  gsap.set(".hero-title", { opacity: 0, y: 40 });
+  gsap.set(".hero-inner", { opacity: 0, y: 40 });
 
   // 2️⃣ 타임라인
   const tl = gsap.timeline();
@@ -208,7 +201,7 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   // 4️⃣ 텍스트 등장
-  .to(".hero-title", {
+  .to(".hero-inner", {
     opacity: 1,
     y: 0,
     duration: 0.8,
