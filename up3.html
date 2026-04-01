@@ -29,7 +29,10 @@
   margin-top:15px;
 }
 .intro-text {
-  color: #fff;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 3vw;
   opacity: 0;
 }
@@ -211,9 +214,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 3️⃣ 컬러가 위로 올라감
   tl.to(".hero-overlay", {
-    y: "-25%",
+    y: "-25vh",
     duration: 1.2,
-    ease: "power4.inOut"
+    ease: "expo.inOut"
   })
 
   // 4️⃣ 텍스트 등장
