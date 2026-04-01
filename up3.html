@@ -14,20 +14,24 @@
 <script src="https://unpkg.com/split-type"></script>
 <style>
 
-.hero-overlay {width:100%;float:fixed}
+
 .hero-inner {
   position: absolute;
   bottom:30px;
   float:left;
 }
+.hero-inner .heroLeft {}
+.hero-inner .heroLeft p {
+  font-size: 4vw;
+  margin-top:15px;
+}
+.hero-inner .heroRight {font-size:1.2vw;}
 .hero-title {
   font-size: 10vw;
   font-weight:600;
 }
-.hero-inner p {
-  font-size: 4vw;
-  margin-top:15px;
-}
+
+
 .intro-text {
 	position: absolute;
   top: 50%;
@@ -45,6 +49,7 @@
   inset: 0;
   background: #e55050; /* 처음 보이는 색 */
   z-index: 2;
+  
 }
 </style>
 
@@ -54,10 +59,12 @@
   <div class="intro-text">Yoo.KM826</div>
   <div class="hero-overlay">
   <div class="hero-inner">
+	<div class="heroLeft">
 	<div class="hero-title">Yoo.KM826</div>
      <p>Creative Developer Portfolio</p>
-  </div>
-  <div class="hero-right">디자인과 퍼블리싱을 연결해 완성도 높은 웹을 만듭니다.</div>
+	 </div>
+	 <div class="heroRight">디자인과 퍼블리싱을 연결해 완성도 높은 웹을 만듭니다.</div>
+  </div> 
   </div>
 </section>
 <section class="intro">
