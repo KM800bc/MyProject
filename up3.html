@@ -18,14 +18,16 @@
 .hero-inner {
   position: absolute;
   bottom:30px;
-  float:left;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .hero-inner .heroLeft {}
 .hero-inner .heroLeft p {
   font-size: 4vw;
   margin-top:15px;
 }
-.hero-inner .heroRight {font-size:1.2vw;}
+.hero-inner .heroRight {}
+.hero-inner .heroRight p {font-size:1.2vw;}
 .hero-title {
   font-size: 10vw;
   font-weight:600;
@@ -223,7 +225,7 @@ window.addEventListener("DOMContentLoaded", () => {
     duration: 3,
     ease: "power2.out"
   })
-  .to({}, { duration: 0.3 })
+  .to({}, { duration: 0.1 })
   
 	.to(".intro-text", {
    opacity: 0,
