@@ -1,7 +1,7 @@
 /*@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;800&display=swap");*/
 
 body {
-  color: #121212;
+  color: #000;
   font-family: 'Inter', sans-serif !important;
   background-color: #f9ffe7;
 }
@@ -284,6 +284,7 @@ footer {
   cursor: url("https://cdn.prod.website-files.com/6708f85ff3d3cba6aff436fb/671251b239d7aeb290a31ac5_cursor-default%402x.svg")
       2 0,
     auto;
+	width:1100px;
 }
 
 a,
