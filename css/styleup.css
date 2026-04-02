@@ -6,7 +6,7 @@ body {background:#fff; color:#111; overflow-x:hidden;}
 
 body {
   color: #121212;
-  font-family: "Outfit", sans-serif;
+  font-family: 'Inter', sans-serif !important;
   background-color: #f9ffe7;
 }
 .container {
