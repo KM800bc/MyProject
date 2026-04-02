@@ -19,17 +19,17 @@
   position: absolute;
   bottom:50px;
   left: 10%;
-  width:1400px;
+
   
 }
-.hero-inner .heroLeft {float:left;}
+.hero-inner .heroLeft { display: flex;  flex-direction: column;}
 .hero-inner .heroLeft p {
   font-size: 3.35vw;
   margin-top:-25px;
   font-weight: 200;
 }
-.hero-inner .dot {position:absolute;bottom:10px;right:0;z-index:3;float:left;}
-.hero-inner .dot::before {content: "";dispaly: black;width:35px;height:35px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
+.hero-inner .dot {position: static;bottom:10px;right:0;z-index:3;float:left;}
+.hero-inner .dot::before {content: "";width:25px;height:25px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
 @keyframes blink {
   0%, 100% { opacity: 0; }
   40% { opacity: 1; }
@@ -47,9 +47,16 @@
   inset: 0;
   background: #e55050; /* 처음 보이는 색 */
   z-index: 2;
-  
 }
 .select {margin:80vh auto 0;}
+@media (max-width: 768px) {
+  .hero-inner .heroLeft .dot {
+    position: static;   /* absolute 해제 */
+    margin-top: 10px;
+    width: auto;
+    height: auto;
+  }
+}
 </style>
 
 </head>
