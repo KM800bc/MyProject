@@ -4,9 +4,11 @@ body {
   color: #000;
   font-family: 'Inter', sans-serif !important;
   background-color: #f9ffe7;
+   overflow-x: hidden;
 }
 .container {
-  /*max-width: 1440px;*/
+  width: 1100px;
+  margin:10px 0 0;
 }
 
 .spacer {
