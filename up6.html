@@ -20,16 +20,16 @@
   bottom:50px;
   left: 10%;
   width:1400px;
-  display:flex;
+  
 }
-.hero-inner .heroLeft {position: relative}
+.hero-inner .heroLeft {float:left;}
 .hero-inner .heroLeft p {
   font-size: 3.35vw;
   margin-top:-25px;
   font-weight: 200;
 }
-.hero-inner .heroLeft .dot {position:absolute;bottom:10px;right:0;z-index:3;}
-.hero-inner .heroLeft .dot::before {width:35px;height:35px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
+.hero-inner .dot {position:absolute;bottom:10px;right:0;z-index:3;float:left;}
+.hero-inner .dot::before {width:35px;height:35px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
 @keyframes blink {
   0%, 100% { opacity: 0; }
   40% { opacity: 1; }
