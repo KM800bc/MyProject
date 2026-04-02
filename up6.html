@@ -27,7 +27,8 @@
   margin-top:-25px;
   font-weight: 200;
 }
-.hero-inner .heroLeft .dot {width:35px;height:35px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
+.hero-inner .heroLeft .dot {position:absolute;bottom:10px;right:0;z-index:3;}
+.hero-inner .heroLeft .dot::before {width:35px;height:35px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
 @keyframes blink {
   0%, 100% { opacity: 0; }
   40% { opacity: 1; }
@@ -59,7 +60,9 @@
 		<div class="heroLeft">
 			<div class="hero-title">Yoo.KM826</div>
 			<p>Creative Developer Portfolio</p>
-			<div class="dot"><p>디자인과 퍼블리싱을 함께 구현하여 완성도 높은 웹을 제공합니다.</p></div> 
+			<div class="dot">
+			<p>디자인과 퍼블리싱을 함께 구현하여 완성도 높은 웹을 제공합니다.</p>
+			</div> 
 		</div>
 	</div>
 	</div>
