@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https:;">
+<title>iPhone Style Portfolio</title>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="css/reset.css" />
+<link rel="stylesheet" href="css/styleup.css" />
+<script src="https://unpkg.com/split-type"></script>
+<style>
+
+
+.hero-inner {
+  position: absolute;
+  bottom:50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width:1100px;
+}
+.hero-inner .heroLeft {position: relative}
+.hero-inner .heroLeft p {
+  font-size: 3.35vw;
+  margin-top:-25px;
+  font-weight: 200;
+}
+.hero-inner .heroLeft .dot {width:35px;height:35px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+.hero-title {
+  font-size: 7.7vw;
+  font-weight:600;
+}
+
+
+.intro-text {position: absolute;top: 50%; left: 50%;transform: translate(-50%, -50%);font-size: 20px;color:#000;opacity: 0; z-index: 3;font-weight:700;}
+/* 🔥 이게 핵심 */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: #e55050; /* 처음 보이는 색 */
+  z-index: 2;
+  
+}
+.select {margin:80vh auto 0;}
+</style>
+
+</head>
+<body>
+<section class="hero-intro"> 
+  <div class="intro-text">KM826&Yoo</div>
+	<div class="hero-overlay">
+	<div class="hero-inner">
+		<div class="heroLeft">
+			<div class="hero-title">Yoo.KM826</div>
+			<p>Creative Developer Portfolio</p>
+			<div class="dot"><p></p></div> 
+		</div>
+	</div>
+	</div>
+</section>
+<section class="select">
+  <div class="container">
+    <h1 class="intro__title" style="font-size:4rm">
+      디자인과 퍼블리싱을 연결해 완성도 높은 웹을 만듭니다
+    </h1>
+	<div class="intro__desc" style="font-size:2rm">
+    <p>Responsible for end-to-end web design and publishing,</p>
+	<p>delivering a consistent user experience from UI planning to implementation.</p>
+	</div>
+  </div>
+</section>
+<section class="intro">
+	<div style="font-size:2rm">    </div>
+  <div class="cloneable"> 
+  <a data-draw-line="" href="#" class="text-draw w-inline-block">
+    <p class="text-draw__p">Bridging</p>
+    <div data-draw-line-box="" class="text-draw__box"></div>
+  </a>
+  <a data-draw-line="" href="#" class="text-draw w-inline-block">
+    <p class="text-draw__p">design and publishing</p>
+    <div data-draw-line-box="" class="text-draw__box"></div>
+  </a>
+  <a data-draw-line="" href="#" class="text-draw w-inline-block">
+    <p class="text-draw__p">to deliver</p>
+    <div data-draw-line-box="" class="text-draw__box"></div>
+  </a>
+  <a data-draw-line="" href="#" class="text-draw w-inline-block">
+    <p class="text-draw__p">refined</p>
+    <div data-draw-line-box="" class="text-draw__box"></div>
+  </a>
+  <a data-draw-line="" href="#" class="text-draw w-inline-block">
+    <p class="text-draw__p">web experiences.</p>
+    <div data-draw-line-box="" class="text-draw__box"></div>
+  </a>
+  </div>
+  </section>
+<div class="container">
+<div class=""><strong style="font-size:3rm;text-align:center">포트폴리오</strong></div>
+  <div class="arch">
+    <div class="arch__left">
+      <div class="arch__info" id="green-arch">
+        <div class="content">
+          <h2 class="header">Green Cityscape</h2>
+          <p class="desc">Vibrant streets with vertical gardens and solar buildings. This oasis thrives on renewable energy, smart transport, and green spaces for biodiversity.</p>
+          <a class="link" href="#" style="background-color: #D5FF37">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none">
+              <path fill="#121212" d="M5 2c0 1.105-1.895 2-3 2a2 2 0 1 1 0-4c1.105 0 3 .895 3 2ZM11 3.5c0 1.105-.895 3-2 3s-2-1.895-2-3a2 2 0 1 1 4 0ZM6 9a2 2 0 1 1-4 0c0-1.105.895-3 2-3s2 1.895 2 3Z" />
+            </svg> <span>Learn More</span></a>
+        </div>
+      </div>
+
+      <div class="arch__info" id="blue-arch">
+        <div class="content">
+          <h2 class="header">Blue Urban Oasis</h2>
+          <p class="desc">Avenues with azure facades and eco-structures. This hub uses clean energy, smart transit, and parks for urban wildlife.</p>
+          <a class="link" href="#" style="background-color: #7DD6FF">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none">
+              <path fill="#121212" d="M5 2c0 1.105-1.895 2-3 2a2 2 0 1 1 0-4c1.105 0 3 .895 3 2ZM11 3.5c0 1.105-.895 3-2 3s-2-1.895-2-3a2 2 0 1 1 4 0ZM6 9a2 2 0 1 1-4 0c0-1.105.895-3 2-3s2 1.895 2 3Z" />
+            </svg> <span>Learn More</span></a>
+        </div>
+      </div>
+
+      <div class="arch__info" id="pink-arch">
+        <div class="content">
+          <h2 class="header">Fluid Architecture</h2>
+          <p class="desc">Desert refuge with fluid architecture and glowing interiors. This sanctuary harnesses solar power, sustainable design, and natural harmony for resilient living.</p>
+          <a class="link" href="#" style="background-color: #FFA0B0">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none">
+              <path fill="#121212" d="M5 2c0 1.105-1.895 2-3 2a2 2 0 1 1 0-4c1.105 0 3 .895 3 2ZM11 3.5c0 1.105-.895 3-2 3s-2-1.895-2-3a2 2 0 1 1 4 0ZM6 9a2 2 0 1 1-4 0c0-1.105.895-3 2-3s2 1.895 2 3Z" />
+            </svg> <span>Learn More</span></a>
+        </div>
+      </div>
+
+      <div class="arch__info" id="orange-arch">
+        <div class="content">
+          <h2 class="header">Martian Arches</h2>
+          <p class="desc">Ethereal structures arc over tranquil waters, bathed in the glow of a setting Martian sun. This desolate beauty showcases the stark, captivating landscape of the red planet.</p>
+          <a class="link" href="#" style="background-color: #FFA17B">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none">
+              <path fill="#121212" d="M5 2c0 1.105-1.895 2-3 2a2 2 0 1 1 0-4c1.105 0 3 .895 3 2ZM11 3.5c0 1.105-.895 3-2 3s-2-1.895-2-3a2 2 0 1 1 4 0ZM6 9a2 2 0 1 1-4 0c0-1.105.895-3 2-3s2 1.895 2 3Z" />
+            </svg> <span>Learn More</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch__right">
+      <div class="img-wrapper" data-index="4">
+        <img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/cu8978xjlsjjpjk52ta0.webp" alt="Green Architecture">
+      </div>
+
+      <div class="img-wrapper" data-index="3">
+        <img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/trh7c8ufv1dqfrofdytd.webp" alt="Blue Architecture">
+      </div>
+
+      <div class="img-wrapper" data-index="2">
+        <img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/aw6qwur0pggp5r03whjq.webp" alt="Pink Architecture">
+      </div>
+
+      <div class="img-wrapper" data-index="1">
+        <img src="https://ik.imagekit.io/kg2nszxjp/GSAP%20pinned%20image%20mask%20reveal%20on%20scroll/sqwn8u84zd1besgl0zpd.webp" alt="Orange Architecture">
+      </div>
+
+    </div>
+  </div>
+</div>
+  <div class="spacer">
+  <section class="lets-work">
+<div class="cursor"></div>
+  <div class="marquee-wrapper">
+    <ul class="marquee a" id="">
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+    </ul>
+  </div>
+  <div class="marquee-wrapper">
+    <ul class="marquee b" id="">
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+      <li>LET’S WORK TOGETHER </li>
+    </ul>
+  </div>
+</section>
+  
+  </div>
+
+
+<!-- FOOTER 
+<footer>
+  <section class="Horizontal">
+  <div class="container">
+    <h3 class="Horizontal__text heading-xl">
+      The containerAnimation property allows us to create ScrollTriggered animations within a container that's animated horizontally. It's like having nested ScrollTriggers!
+    </h3>
+  </div>
+</section>
+</footer>-->
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 1️⃣ 텍스트 미리 숨김
+  gsap.set(".hero-inner", { opacity: 0, y: 40 });
+
+  // 2️⃣ 타임라인
+  const tl = gsap.timeline();
+  
+  tl.to(".intro-text", {
+    opacity: 1,
+    duration: 3,
+    ease: "power2.out"
+  })
+  //.to({}, { duration: 0.1 })
+  
+	.to(".intro-text", {
+   opacity: 0,
+  duration: 0.8,
+  ease: "power2.in"
+});
+  // 3️⃣ 컬러가 위로 올라감
+  tl.to(".hero-overlay", {
+    y: "-25vh",
+    duration: 1.2,
+    ease: "expo.inOut"
+  })
+
+  // 4️⃣ 텍스트 등장
+  .to(".hero-inner", {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.out"
+  }, "-=0.6");
+
+});
+
+// GSAP ScrollTrigger 초기화
+gsap.registerPlugin(ScrollTrigger);
+
+// Set z-index for images
+document.querySelectorAll(".arch__right .img-wrapper").forEach((element) => {
+  const order = element.getAttribute("data-index");
+  if (order !== null) {
+    element.style.zIndex = order;
+  }
+});
+
+// Mobile layout handler (only handle order)
+function handleMobileLayout() {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  const leftItems = gsap.utils.toArray(".arch__left .arch__info");
+  const rightItems = gsap.utils.toArray(".arch__right .img-wrapper");
+
+  if (isMobile) {
+    // Interleave items using order
+    leftItems.forEach((item, i) => {
+      item.style.order = i * 2;
+    });
+    rightItems.forEach((item, i) => {
+      item.style.order = i * 2 + 1;
+    });
+  } else {
+    // Clear order for desktop
+    leftItems.forEach((item) => {
+      item.style.order = "";
+    });
+    rightItems.forEach((item) => {
+      item.style.order = "";
+    });
+  }
+}
+
+// Debounce resize for performance
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(handleMobileLayout, 100);
+});
+
+// Run on initial load
+handleMobileLayout();
+
+const imgs = gsap.utils.toArray(".img-wrapper img");
+const bgColors = ["#EDF9FF", "#FFECF2", "#FFE8DB"];
+
+// GSAP Animation with Media Query
+ScrollTrigger.matchMedia({
+  "(min-width: 769px)": function () {
+    const mainTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".arch",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".arch__right",
+        scrub: true
+      }
+    });
+
+    gsap.set(imgs, {
+      clipPath: "inset(0)",
+      objectPosition: "0px 0%"
+    });
+
+    imgs.forEach((_, index) => {
+      const currentImage = imgs[index];
+      const nextImage = imgs[index + 1] ? imgs[index + 1] : null;
+
+      const sectionTimeline = gsap.timeline();
+
+      if (nextImage) {
+        sectionTimeline
+          .to(
+            "body",
+            {
+              backgroundColor: bgColors[index],
+              duration: 1.5,
+              ease: "power2.inOut"
+            },
+            0
+          )
+          .to(
+            currentImage,
+            {
+              clipPath: "inset(0px 0px 100%)",
+              objectPosition: "0px 60%",
+              duration: 1.5,
+              ease: "none"
+            },
+            0
+          )
+          .to(
+            nextImage,
+            {
+              objectPosition: "0px 40%",
+              duration: 1.5,
+              ease: "none"
+            },
+            0
+          );
+      }
+
+      mainTimeline.add(sectionTimeline);
+    });
+  },
+  "(max-width: 768px)": function () {
+    const mbTimeline = gsap.timeline();
+    gsap.set(imgs, {
+      objectPosition: "0px 60%"
+    });
+
+    imgs.forEach((image, index) => {
+      const innerTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: image,
+          start: "top-=70% top+=50%",
+          end: "bottom+=200% bottom",
+          scrub: true
+        }
+      });
+
+      innerTimeline
+        .to(image, {
+          objectPosition: "0px 30%",
+          duration: 5,
+          ease: "none"
+        })
+        .to("body", {
+          backgroundColor: bgColors[index],
+          duration: 1.5,
+          ease: "power2.inOut"
+        });
+
+      mbTimeline.add(innerTimeline);
+    });
+  }
+});
+
+
+
+
+const cursor = document.querySelector(".cursor");
+const marqueeItems = document.querySelectorAll(".marquee li");
+
+// 커서 따라다니기
+window.addEventListener("mousemove", e => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+// hover + 클릭
+marqueeItems.forEach(item => {
+  item.addEventListener("mouseenter", () => {
+    cursor.classList.add("hover"); // 커서 모양 변경
+  });
+
+  item.addEventListener("mouseleave", () => {
+    cursor.classList.remove("hover");
+  });
+
+  item.addEventListener("click", () => {
+    const url = item.getAttribute("data-link");
+    if(url) window.location.href = url; // 클릭 이동
+  });
+});
+
+
+
+// ------- Osmo [https://osmo.supply/] ------- //
+
+
+function initDrawRandomUnderline() {
+  const svgVariants = [
+    `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20.9999C26.7762 16.2245 49.5532 11.5572 71.7979 14.6666C84.9553 16.5057 97.0392 21.8432 109.987 24.3888C116.413 25.6523 123.012 25.5143 129.042 22.6388C135.981 19.3303 142.586 15.1422 150.092 13.3333C156.799 11.7168 161.702 14.6225 167.887 16.8333C181.562 21.7212 194.975 22.6234 209.252 21.3888C224.678 20.0548 239.912 17.991 255.42 18.3055C272.027 18.6422 288.409 18.867 305 17.9999" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>`,
+    `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 24.2592C26.233 20.2879 47.7083 16.9968 69.135 13.8421C98.0469 9.5853 128.407 4.02322 158.059 5.14674C172.583 5.69708 187.686 8.66104 201.598 11.9696C207.232 13.3093 215.437 14.9471 220.137 18.3619C224.401 21.4596 220.737 25.6575 217.184 27.6168C208.309 32.5097 197.199 34.281 186.698 34.8486C183.159 35.0399 147.197 36.2657 155.105 26.5837C158.11 22.9053 162.993 20.6229 167.764 18.7924C178.386 14.7164 190.115 12.1115 201.624 10.3984C218.367 7.90626 235.528 7.06127 252.521 7.49276C258.455 7.64343 264.389 7.92791 270.295 8.41825C280.321 9.25056 296 10.8932 305 13.0242" stroke="#E55050" stroke-width="10" stroke-linecap="round"/></svg>`,
+    `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 29.5014C9.61174 24.4515 12.9521 17.9873 20.9532 17.5292C23.7742 17.3676 27.0987 17.7897 29.6575 19.0014C33.2644 20.7093 35.6481 24.0004 39.4178 25.5014C48.3911 29.0744 55.7503 25.7731 63.3048 21.0292C67.9902 18.0869 73.7668 16.1366 79.3721 17.8903C85.1682 19.7036 88.2173 26.2464 94.4121 27.2514C102.584 28.5771 107.023 25.5064 113.276 20.6125C119.927 15.4067 128.83 12.3333 137.249 15.0014C141.418 16.3225 143.116 18.7528 146.581 21.0014C149.621 22.9736 152.78 23.6197 156.284 24.2514C165.142 25.8479 172.315 17.5185 179.144 13.5014C184.459 10.3746 191.785 8.74853 195.868 14.5292C199.252 19.3205 205.597 22.9057 211.621 22.5014C215.553 22.2374 220.183 17.8356 222.979 15.5569C225.4 13.5845 227.457 11.1105 230.742 10.5292C232.718 10.1794 234.784 12.9691 236.164 14.0014C238.543 15.7801 240.717 18.4775 243.356 19.8903C249.488 23.1729 255.706 21.2551 261.079 18.0014C266.571 14.6754 270.439 11.5202 277.146 13.6125C280.725 14.7289 283.221 17.209 286.393 19.0014C292.321 22.3517 298.255 22.5014 305 22.5014" stroke="#E55050" stroke-width="10" stroke-linecap="round"/></svg>`,
+    `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.0039 32.6826C32.2307 32.8412 47.4552 32.8277 62.676 32.8118C67.3044 32.807 96.546 33.0555 104.728 32.0775C113.615 31.0152 104.516 28.3028 102.022 27.2826C89.9573 22.3465 77.3751 19.0254 65.0451 15.0552C57.8987 12.7542 37.2813 8.49399 44.2314 6.10216C50.9667 3.78422 64.2873 5.81914 70.4249 5.96641C105.866 6.81677 141.306 7.58809 176.75 8.59886C217.874 9.77162 258.906 11.0553 300 14.4892" stroke="#E55050" stroke-width="10" stroke-linecap="round"/></svg>`,
+    `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.99805 20.9998C65.6267 17.4649 126.268 13.845 187.208 12.8887C226.483 12.2723 265.751 13.2796 304.998 13.9998" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>`,
+    `<svg width="310" height="40" viewBox="0 0 310 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 29.8857C52.3147 26.9322 99.4329 21.6611 146.503 17.1765C151.753 16.6763 157.115 15.9505 162.415 15.6551C163.28 15.6069 165.074 15.4123 164.383 16.4275C161.704 20.3627 157.134 23.7551 153.95 27.4983C153.209 28.3702 148.194 33.4751 150.669 34.6605C153.638 36.0819 163.621 32.6063 165.039 32.2029C178.55 28.3608 191.49 23.5968 204.869 19.5404C231.903 11.3436 259.347 5.83254 288.793 5.12258C294.094 4.99476 299.722 4.82265 305 5.45025" stroke="#E55050" stroke-width="10" stroke-linecap="round"/></svg>`
+  ];
+  // Add attributes to <svg> elements
+  function decorateSVG(svgEl) {
+    svgEl.setAttribute('class', 'text-draw__box-svg');
+    svgEl.setAttribute('preserveAspectRatio', 'none');
+    svgEl.querySelectorAll('path').forEach(path => {
+      path.setAttribute('stroke', 'currentColor');
+    });
+  }
+  let nextIndex = null;
+  document.querySelectorAll('[data-draw-line]').forEach(container => {
+    const box = container.querySelector('[data-draw-line-box]');
+    if (!box) return;
+    let enterTween = null;
+    let leaveTween = null;
+    container.addEventListener('mouseenter', () => {
+      // Don't restart if still playing
+      if (enterTween && enterTween.isActive()) return;
+      if (leaveTween && leaveTween.isActive()) leaveTween.kill();
+      // Random Start
+      if (nextIndex === null) {
+        nextIndex = Math.floor(Math.random() * svgVariants.length);
+      }
+      // Animate Draw
+      box.innerHTML = svgVariants[nextIndex];
+      const svg = box.querySelector('svg');
+      if (svg) {
+        decorateSVG(svg);
+        const path = svg.querySelector('path');
+        if (path) {
+          gsap.set(path, { drawSVG: '0%' });
+          enterTween = gsap.to(path, {
+            duration: 0.5,
+            drawSVG: '100%',
+            ease: 'power2.inOut',
+            onComplete: () => { enterTween = null; }
+          });
+        }
+      }
+      // Advance for next hover across all items
+      nextIndex = (nextIndex + 1) % svgVariants.length;
+    });
+    container.addEventListener('mouseleave', () => {
+      const path = box.querySelector('path');
+      if (!path) return;
+      const playOut = () => {
+        // Don't restart if still drawing out
+        if (leaveTween && leaveTween.isActive()) return;
+        leaveTween = gsap.to(path, {
+          duration: 0.5,
+          drawSVG: '100% 100%',
+          ease: 'power2.inOut',
+          onComplete: () => {
+            leaveTween = null;
+            box.innerHTML = ''; // remove SVG when done
+          }
+        });
+      };
+      if (enterTween && enterTween.isActive()) {
+        // Wait until draw-in finishes
+        enterTween.eventCallback('onComplete', playOut);
+      } else {
+        playOut();
+      }
+    });
+  });
+}
+// Initialize Draw Random Underline
+document.addEventListener('DOMContentLoaded', function() {
+  initDrawRandomUnderline();
+});
+//https://mallardandclaret.com/  참고
+</script>
+</body>
+</html>
