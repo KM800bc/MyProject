@@ -13,13 +13,16 @@
 <link rel="stylesheet" href="css/styleup.css" />
 <script src="https://unpkg.com/split-type"></script>
 <style>
-
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: #e55050; /* 처음 보이는 색 */
+  z-index: 2;
+}
 .hero-inner {
   position: absolute;
   bottom:50px;
   left: 10%;
-
-  
 }
 .hero-inner .heroLeft { display: flex;  flex-direction: column;float:left}
 .hero-inner .heroLeft p {
@@ -37,16 +40,7 @@
   font-size: 7.7vw;
   font-weight:600;
 }
-
-
 .intro-text {position: absolute;top: 50%; left: 50%;transform: translate(-50%, -50%);font-size: 20px;color:#000;opacity: 0; z-index: 3;font-weight:700;}
-/* 🔥 이게 핵심 */
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: #e55050; /* 처음 보이는 색 */
-  z-index: 2;
-}
 .select {margin:80vh auto 0;}
 @media (max-width: 768px) {
   .hero-inner .heroLeft .dot {
@@ -56,7 +50,7 @@
     height: auto;
   }
 }
-.mu {text-align:right;z-index:3;position:absolute;right:10%;top:}
+.mu {position:absolute;right:10%;top:3%;z-index:3}
 .mu li {float:left; padding-left:30px}
 </style>
 
