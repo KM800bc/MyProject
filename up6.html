@@ -217,7 +217,10 @@ window.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   // 1️⃣ 텍스트 미리 숨김
-  gsap.set(".hero-inner", { opacity: 0, y: 40 });
+  gsap.set([".hero-inner", ".mu"], {
+	opacity: 0,
+	y: 40
+});
 
   // 2️⃣ 타임라인
   const tl = gsap.timeline();
@@ -242,7 +245,7 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   // 4️⃣ 텍스트 등장
-  .to([".hero-inner",".mu"], {
+  .to([".hero-inner", ".mu"], {
     opacity: 1,
     y: 0,
     duration: 0.8,
