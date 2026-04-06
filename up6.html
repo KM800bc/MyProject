@@ -27,11 +27,11 @@
 .hero-inner .heroLeft { display: flex;  flex-direction: column;float:left}
 .hero-inner .heroLeft p {
   font-size: 2.7vw;
-  margin-top:-15px;
+  margin-left:6px;
   font-weight: 200;
 }
-.hero-inner .dot {bottom:10px;z-index:3;float:left;padding:0 30px 0 0;font-size:2vh;position:relative;text-align:left;min-height:150px}
-.hero-inner .dot::before {content: "";width:25px;height:25px;position:absolute;bottom:10px;right:0;z-index:3;background-color:#000;animation: blink 1s infinite;}
+.hero-inner .dot {bottom:10px;z-index:3;float:left;padding:0 40px 0 0;font-size:2vh;position:relative;text-align:left;min-height:150px}
+.hero-inner .dot::after {content: "";width:25px;height:25px;position:absolute;;z-index:3;background-color:#000;animation: blink 1s infinite;}
 @keyframes blink {
   0%, 100% { opacity: 0; }
   40% { opacity: 1; }
@@ -39,13 +39,14 @@
 .hero-title {
   font-size: 8vw;
   font-weight:600;
+  line-height:0.8;
 }
 .intro-text {position: absolute;top: 50%; left: 50%;transform: translate(-50%, -50%);font-size: 20px;color:#000;opacity: 0; z-index: 3;font-weight:700;}
 .select {margin:80vh auto 0;}
 @media (max-width: 768px) {
   .hero-inner .heroLeft .dot {
     position: static;   /* absolute 해제 */
-    margin-top: 10px;
+   /* margin-top: 10px;*/
     width: auto;
     height: auto;
   }
@@ -69,7 +70,7 @@
 				<div class="hero-title">U.KM826</div>
 				<p>Creative Developer Portfolio</p>
 			</div>
-			<div class="dot">디자인과 퍼블리싱을 함께 구현하여 완성도 높은 웹을 제공합니다.</div>
+			<div class="dot">디자인과 퍼블리싱을 함께 구현하여 완성도 높은 웹을 제공합니다</div>
 		</div>
 	</div>
 </div>
