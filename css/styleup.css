@@ -299,7 +299,11 @@ button {
   display: flex;
   position: relative;
 }
-
+.cloneable {
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+}
 .text-draw {
   color: #340824;
   margin-left: 1em;
