@@ -299,14 +299,9 @@ button {
   display: flex;
   position: relative;
 }
-.cloneable {
-  font-size:1.5vw;
-  display: inline-block;
-  font-weight:400;
-}
+.cloneable {display:inline-block;}
 .text-draw {
   color: #340824;
-  margin-left: 1em;
   margin-right: 1em;
   font-size: 2vw;
   text-decoration: none;
@@ -314,7 +309,7 @@ button {
 
 .text-draw__p {
   margin-bottom: 0;
- /* font-size: 1.5em;*/
+ font-size: 0.8em;
   font-weight: 500;
   line-height: 1.1;
 }
