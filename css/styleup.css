@@ -300,9 +300,9 @@ button {
   position: relative;
 }
 .cloneable {
-  justify-content: center;
-  align-items: center;
+  font-size:1.5vw;
   display: inline-block;
+  font-weight:400;
 }
 .text-draw {
   color: #340824;
