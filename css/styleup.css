@@ -8,7 +8,7 @@ body {
 }
 .container {
   width: 1400px;
-  margin:0 0 0 10%;
+  margin:20px 0 0 10%;
 }
 
 .spacer {
@@ -22,7 +22,7 @@ body {
   justify-content: space-between;
   max-width: 1100px;
   margin: 0 auto;
-  min-height: 300vh
+  min-height: 200vh
 }
 
 .arch__left {
