@@ -217,6 +217,7 @@ window.addEventListener("DOMContentLoaded", () => {
   // 1️⃣ 텍스트 미리 숨김
   gsap.set(".hero-inner", { opacity: 0, y: 40 });
   gsap.set(".mu", { opacity: 0, y: -30 });
+  gsap.set(".select", { opacity: 0, y: 0 });
 
   // 2️⃣ 타임라인
   const tl = gsap.timeline();
@@ -240,13 +241,21 @@ window.addEventListener("DOMContentLoaded", () => {
     ease: "expo.inOut"
   })
 
-  // 4️⃣ 텍스트 등장
+  // 텍스트 등장
   .to([".hero-inner", ".mu"], {
     opacity: 1,
     y: 0,
     duration: 0.8,
     ease: "power3.out"
-  }, "-=0.6");
+  })
+
+ // 소개 등장
+  .to(".select", {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.out"
+  };
 
 });
 
