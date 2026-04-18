@@ -217,7 +217,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // 1️⃣ 텍스트 미리 숨김
   gsap.set(".hero-inner", { opacity: 0, y: 40 });
   gsap.set(".mu", { opacity: 0, y: -30 });
-  gsap.set(".select", { opacity: 0, y: 0 });
 
   // 2️⃣ 타임라인
   const tl = gsap.timeline();
@@ -226,7 +225,7 @@ window.addEventListener("DOMContentLoaded", () => {
     opacity: 1,
     duration: 3,
     ease: "power2.out"
-  });
+  })
   //.to({}, { duration: 1 })
   
 	.to(".intro-text", {
@@ -239,23 +238,15 @@ window.addEventListener("DOMContentLoaded", () => {
     y: "-30vh",
     duration: 1.2,
     ease: "expo.inOut"
-  });
+  })
 
-  // 텍스트 등장
+  // 4️⃣ 텍스트 등장
   .to([".hero-inner", ".mu"], {
     opacity: 1,
     y: 0,
     duration: 0.8,
     ease: "power3.out"
-  });
-
- // 소개 등장
-  .to(".select", {
-    opacity: 1,
-    y: 0,
-    duration: 0.8,
-    ease: "power3.out"
-  });
+  }, "-=0.6");
 
 });
 
