@@ -8,12 +8,12 @@ body {
 }
 .container {
   width: 1400px;
-  margin:20px 0 0 10%;
+  margin:0 0 0 10%;
 }
 
 .spacer {
   width: 100%;
-  background-color:#000;
+  color:#000;
 }
 
 .arch {
