@@ -215,7 +215,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-	background-color:#000;
+	/*background-color:#000;*/
 	color:#fff;
 	padding:25px 0;
   }
