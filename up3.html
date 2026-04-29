@@ -58,7 +58,7 @@
 
 .marquee {
   display: flex;
-  gap: 80px;
+  gap: 40px;
   white-space: nowrap;
   animation: marquee 20s linear infinite;
    width: max-content;
@@ -545,7 +545,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const marquee = document.querySelector('.marquee');
 marquee.innerHTML += marquee.innerHTML;
-
+// 화면 너비보다 충분히 길어질 때까지 반복
+while (marquee.scrollWidth < window.innerWidth * 2) {
+  marquee.innerHTML += text;
+}
 
 
 </script>
