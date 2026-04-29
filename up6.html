@@ -67,6 +67,42 @@
  .intro__desc {font-size:1.2vw;font-weight:300}
  .w75 {75vh auto 120px}
 
+
+.marquee-wrapper {
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 60px;
+  animation: marquee 18s linear infinite;
+}
+
+.marquee li {
+  list-style: none;
+  white-space: nowrap;
+  font-size: 48px;
+  font-weight: 600;
+  opacity: 0.1;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+
+
+
+
+
+
 </style>
 
 </head>
@@ -122,13 +158,9 @@
   <div class="lets-work">
 <div class="cursor"></div>
   <div class="marquee-wrapper">
-    <ul class="marquee a" id="">
-      <li>Featured Projects</li>
-      <li>Featured Projects</li>
-      <li>Featured Projects</li>
-	  <li>Featured Projects</li>
-	  <li>Featured Projects</li>
-    </ul>
+    <ul class="marquee">
+  <li>Featured Projects</li>
+</ul>
   </div>
   <!--div class="marquee-wrapper">
     <ul class="marquee b" id="">
@@ -428,8 +460,22 @@ ScrollTrigger.matchMedia({
 
 
 
-const cursor = document.querySelector(".cursor");
-const marqueeItems = document.querySelectorAll(".marquee li");
+const marquee = document.querySelector('.marquee');
+const item = marquee.querySelector('li');
+const text = item.outerHTML;
+
+// 초기 1개 제거하고 다시 채움
+marquee.innerHTML = '';
+
+let totalWidth = 0;
+
+// 화면보다 충분히 길어질 때까지 반복 생성
+while (totalWidth < window.innerWidth * 2) {
+  marquee.innerHTML += text;
+
+  // DOM 업데이트 후 width 계산
+  totalWidth = marquee.scrollWidth;
+}
 
 // 커서 따라다니기
 window.addEventListener("mousemove", e => {
