@@ -229,6 +229,7 @@ footer {
   .marquee-wrapper .a li {
 	animation: textLoop 10s linear infinite;
     padding:0 10px; /* 텍스트 사이 간격 */
+	color:#000;
   }
   .marquee-wrapper .b li {
 	animation: textLoop2 10s linear infinite;
