@@ -224,11 +224,11 @@ footer {
     white-space: nowrap;
     font-weight: bold;
 	letter-spacing:-2px;
-    font-size: 96px; /* 글자 크게 */
+    font-size: 50px; /* 글자 크게 */
   }
   .marquee-wrapper .a li {
 	animation: textLoop 10s linear infinite;
-    padding:0 20px; /* 텍스트 사이 간격 */
+    padding:0 10px; /* 텍스트 사이 간격 */
   }
   .marquee-wrapper .b li {
 	animation: textLoop2 10s linear infinite;
