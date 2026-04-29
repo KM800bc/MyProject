@@ -16,11 +16,11 @@
 
 
 .hero-inner {
- /*  position: absolute;
+  position: absolute;
   bottom:50px;
   left: 50%;
   transform: translateX(-50%);
-  width:1100px;*/
+  width:1100px;
 }
 .hero-inner .heroLeft {position: relative}
 .hero-inner .heroLeft p {
@@ -49,6 +49,44 @@
   
 }
 .select {margin:80vh auto 0;}
+
+.marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 40px 0;
+}
+
+.marquee {
+  display: flex;
+  gap: 80px;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111;
+  opacity: 0.08; /* 👉 기본 흐릿하게 */
+  transition: opacity 0.4s ease;
+}
+
+/* 👉 살짝 강조 (마우스 오버) */
+.marquee span:hover {
+  opacity: 0.4;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
 </style>
 
 </head>
@@ -496,7 +534,14 @@ function initDrawRandomUnderline() {
 document.addEventListener('DOMContentLoaded', function() {
   initDrawRandomUnderline();
 });
-//https://mallardandclaret.com/  참고
+
+
+
+const marquee = document.querySelector('.marquee');
+marquee.innerHTML += marquee.innerHTML;
+
+
+
 </script>
 </body>
 </html>
