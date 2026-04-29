@@ -546,7 +546,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const marquee = document.querySelector('.marquee');
 marquee.innerHTML += marquee.innerHTML;
 // 화면 너비보다 충분히 길어질 때까지 반복
-while (marquee.scrollWidth < window.innerWidth * 2) {
+while (marquee.scrollWidth < window.innerWidth * 6) {
   marquee.innerHTML += text;
 }
 
