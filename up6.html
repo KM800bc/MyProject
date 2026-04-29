@@ -442,7 +442,15 @@ marqueeItems.forEach(item => {
   });
 });
 
-
+window.addEventListener('resize', () => {
+  marquee.innerHTML = '';
+  
+  let totalWidth = 0;
+  while (totalWidth < window.innerWidth * 2) {
+    marquee.innerHTML += text;
+    totalWidth = marquee.scrollWidth;
+  }
+});
 
 // ------- Osmo [https://osmo.supply/] ------- //
 
